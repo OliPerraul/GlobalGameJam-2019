@@ -155,3 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88659d610bf642b4fbdab1c4908e052f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Machine:
+    contextSize: 4
+    states:
+    - {fileID: 11400000, guid: 9f3414e5d812e1249bf73b1ff8220ad0, type: 2}
+    - {fileID: 11400000, guid: 9411cccd1c8109c42b6d02eac96fea66, type: 2}
+    - {fileID: 11400000, guid: f701459eb7b2748479c72f4dc8d9e539, type: 2}
+    StateName: 

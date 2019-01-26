@@ -10,14 +10,23 @@ namespace Core
     {
         public static Game Instance;
 
-        public Core.FSM.Machine Machine;
+        public FSM.Machine Machine;
 
         public void Awake()
         {
             Instance = this;
 
+            Machine.Start();
+            Machine.SetContext(Instance, 0); //
+
             DontDestroyOnLoad(Instance.gameObject);
             SceneManager.LoadScene("StartScreen");
+        }
+
+
+        public void Update()
+        {
+            Machine.Tick();
         }
     }
 }

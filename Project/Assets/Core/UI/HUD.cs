@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class HUD : MonoBehaviour
+namespace Core.UI
 {
+    public class HUD : MonoBehaviour
+    {
 
 
 
+    }
 }

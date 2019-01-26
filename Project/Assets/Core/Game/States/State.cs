@@ -11,22 +11,22 @@ namespace Core.States
         
         public override void BeginTick()
         {
-            throw new System.NotImplementedException();
+           // throw new System.NotImplementedException();
         }
 
         public override void EndTick()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         public override void Enter(params object[] args)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         public override void Exit()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
     }
 
