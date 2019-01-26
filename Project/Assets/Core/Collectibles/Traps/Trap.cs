@@ -30,12 +30,6 @@ namespace Core.Collectibles.Traps
                     }
 
                     Destroy(gameObject);
-                    Game.Instance.AICount--;
-                    if (Game.Instance.AICount <= 0)
-                    {
-                        Game.Instance.AICount = 0;
-                        Game.Instance.OnWaveCleared();
-                    }
 
                 }
 
@@ -52,15 +46,8 @@ namespace Core.Collectibles.Traps
                         VisitorAI.SetState(VisitorAI.State.ExitHouse);
                     }
 
-
                     Destroy(gameObject);
-                    Game.Instance.AICount--;
-                    //Game.Instance.AICount--;
-                    if (Game.Instance.AICount <= 0)
-                    {
-                        Game.Instance.AICount = 0;
-                        Game.Instance.OnWaveCleared();
-                    }
+
 
                 }
             }

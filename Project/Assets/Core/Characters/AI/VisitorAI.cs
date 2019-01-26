@@ -223,6 +223,12 @@ public class VisitorAI : MonoBehaviour
             2)
         {
             Destroy(gameObject);
+            Core.Game.Instance.AICount--;
+            if (Core.Game.Instance.AICount <= 0)
+            {
+                Core.Game.Instance.AICount = 0;
+                Core.Game.Instance.OnWaveCleared();
+            }
 
         }
 
