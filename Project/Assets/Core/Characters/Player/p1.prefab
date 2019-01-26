@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 8312409978929931857, guid: 5dcb5561cadc8f94fbf20196ce6d71b7,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: p1
       objectReference: {fileID: 0}
     - target: {fileID: 8773265279857945387, guid: 5dcb5561cadc8f94fbf20196ce6d71b7,
         type: 3}
@@ -67,5 +67,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3851462884139820817, guid: 5dcb5561cadc8f94fbf20196ce6d71b7,
+        type: 3}
+      propertyPath: SpriteR
+      value: 
+      objectReference: {fileID: 6217285825098925321}
+    - target: {fileID: 7069486528582724006, guid: 5dcb5561cadc8f94fbf20196ce6d71b7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df5857b1eb90adc4e96ad27b83862228, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dcb5561cadc8f94fbf20196ce6d71b7, type: 3}
+--- !u!212 &6217285825098925321 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3870977882798454034, guid: 5dcb5561cadc8f94fbf20196ce6d71b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7201332101936820251}
+  m_PrefabAsset: {fileID: 0}
