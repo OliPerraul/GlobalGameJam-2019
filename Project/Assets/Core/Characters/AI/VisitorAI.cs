@@ -59,9 +59,35 @@ public class VisitorAI : MonoBehaviour
     {
         StateSwitch();
     }
-    
+
+    //ADDED
+    void SetState(State s)
+    {
+        currentState = s;
+
+        switch (currentState)
+        {
+            case State.Idle:
+                _visitor.destination = visitorTransform.position;
+                break;
+            case State.Wander:
+                //UpdateWanderState();
+                Vector3 randomRange = new Vector3(
+                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0,
+                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
+
+                Vector3 nextDestination = visitorTransform.position + randomRange;
+                _visitor.destination = nextDestination;
+                break;
+            case State.Chase:
+                //UpdateChaseState();
+                _visitor.destination = agentTransform.position;
+                break;
+        }
+    }
+
     //-------------------------------------------------------------------------
-    
+
     /// <summary>
     /// State swith.
     /// </summary>
@@ -86,25 +112,20 @@ public class VisitorAI : MonoBehaviour
     /// </summary>
     void UpdateWanderState()
     {
-        Vector3 randomRange = new Vector3 ( 
-        (UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0, 
-        (UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
-        
-        Vector3 nextDestination = visitorTransform.position + randomRange;
-        _visitor.destination = nextDestination;
-
         _stateTime += Time.deltaTime;
         
         if (_stateTime > wanderTime)
         {
             _stateTime = 0;
-            currentState = State.Idle;
+            //currentState = State.Idle;
+            SetState(State.Idle);
         }
         
         if (agentTransform.GetComponent<AgentAI>().isWalk)
         {
             _stateTime = 0;
-            currentState = State.Chase;
+            SetState(State.Chase);
+            //currentState = State.Chase;
         }
 
         Debug.Log("Wander Time: " + _stateTime);
@@ -115,13 +136,14 @@ public class VisitorAI : MonoBehaviour
     /// </summary>
     void UpdateIdleState()
     {
-        _visitor.destination = visitorTransform.position;
+
         _stateTime += Time.deltaTime;
         
         if (_stateTime > idleTime)
         {
             _stateTime = 0;
-            currentState = State.Wander;
+            //currentState = State.Wander;
+            SetState(State.Wander);
         }
 
         Debug.Log("Idle Time: " + _stateTime);
@@ -132,11 +154,12 @@ public class VisitorAI : MonoBehaviour
     /// </summary>
     private void UpdateChaseState()
     {
-        _visitor.destination = agentTransform.position;
+        //_visitor.destination = agentTransform.position;
         
         if (!agentTransform.GetComponent<AgentAI>().isWalk)
         {
-            currentState = State.Idle;
+            //currentState = State.Idle;
+            SetState(State.Idle);
         }
     }
     //-------------------------------------------------------------------------

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.AI;
+
+
 namespace Core
 {
 
@@ -35,6 +38,8 @@ namespace Core
         public static Level Instance;
 
 
+        public NavMeshSurface NMSurf;
+
 
         public void Start()
         {
@@ -48,8 +53,12 @@ namespace Core
         
         public void Update()
         {
-            //if(player.transform.position.y)
-            AdjustTranspa();
+            if (player != null)
+            {
+
+                //if(player.transform.position.y)
+                AdjustTranspa();
+            }
         }
 
 

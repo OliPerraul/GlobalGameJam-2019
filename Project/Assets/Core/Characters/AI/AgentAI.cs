@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.AI;
+
 public class AgentAI : MonoBehaviour
 {
 
@@ -77,9 +79,54 @@ public class AgentAI : MonoBehaviour
     {
         StateSwitch();
     }
-    
+
+    //ADDED
+    void SetState(State s)
+    {
+        currentState = s;
+
+        switch (currentState)
+        {
+            case State.Idle:
+                //_visitor.destination = visitorTransform.position;
+                _agent.destination = agentTransform.position;
+                break;
+
+
+            case State.Wander:
+                Vector3 randomRange = new Vector3(
+                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0,
+                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
+
+                Vector3 nextDestination = agentTransform.position + randomRange;
+                _agent.destination = nextDestination;
+                break;
+
+
+            case State.Walk:
+                //UpdateChaseState();
+                //_visitor.destination = agentTransform.position;
+
+
+                // THE POINT HAS TO BE ON THE NAVMESH
+
+                Vector3 result = _visitingPos[_posIndex].position; // NOT GOOD
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(_visitingPos[_posIndex].position, out hit, 2.0f, NavMesh.AllAreas))
+                {
+                    result = hit.position;
+                    //return true;
+                }// else were in trouble
+
+                _agent.destination = result;
+
+
+                break;
+        }
+    }
+
     //-------------------------------------------------------------------------
-    
+
     /// <summary>
     /// State swith.
     /// </summary>
@@ -104,12 +151,12 @@ public class AgentAI : MonoBehaviour
     /// </summary>
     void UpdateWanderState()
     {
-        Vector3 randomRange = new Vector3 ( 
-        (UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0, 
-        (UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
+        //Vector3 randomRange = new Vector3 ( 
+        //(UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0, 
+        //(UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
         
-        Vector3 nextDestination = agentTransform.position + randomRange;
-        _agent.destination = nextDestination;
+        //Vector3 nextDestination = agentTransform.position + randomRange;
+        //_agent.destination = nextDestination;
 
         _stateTime += Time.deltaTime;
         _waitingTime += Time.deltaTime;
@@ -118,7 +165,8 @@ public class AgentAI : MonoBehaviour
         {
             _stateTime = 0;
             Debug.Log("Idle");
-            currentState = State.Idle;
+            //currentState = State.Idle;
+            SetState(State.Idle);
         }
         
         if (_waitingTime > waitingTime)
@@ -134,7 +182,7 @@ public class AgentAI : MonoBehaviour
     /// </summary>
     void UpdateIdleState()
     {
-        _agent.destination = agentTransform.position;
+        //_agent.destination = agentTransform.position;
         _stateTime += Time.deltaTime;
         _waitingTime += Time.deltaTime;
         
@@ -142,7 +190,8 @@ public class AgentAI : MonoBehaviour
         {
             _stateTime = 0;
             Debug.Log("Wander");
-            currentState = State.Wander;
+            //currentState = State.Wander;
+            SetState(State.Wander);
         }
         
         if (_waitingTime > waitingTime)
@@ -165,8 +214,9 @@ public class AgentAI : MonoBehaviour
         }
         // Have to consider the data type conversion.
         _posIndex = UnityEngine.Random.Range(0, _visitingPos.Count);
-        Debug.Log(_visitingPos[_posIndex].localPosition);
-        currentState = State.Walk;
+        //Debug.Log(_visitingPos[_posIndex].localPosition); // NO LOCAL POS PLZ
+        //currentState = State.Walk;
+        SetState(State.Walk);
     }
     
     /// <summary>
@@ -175,21 +225,29 @@ public class AgentAI : MonoBehaviour
     private void UpdateWalkState()
     {
         _isWalk = true;
-        _agent.destination = _visitingPos[_posIndex].position;
+        //_agent.destination = _visitingPos[_posIndex].position;
         if (Vector3.Distance(agentTransform.position, _agent.destination) < 
             0.5)
         {
             Debug.Log("Idle");
-            currentState = State.Idle;
+            //currentState = State.Idle;
+            SetState(State.Idle);
             _visitingPos.Remove(_visitingPos[_posIndex]);
         }
         
     }
+
+
     //-------------------------------------------------------------------------
     #endregion
 
     #region MyRegion
     //-------------------------------------------------------------------------
+
+
+
+
+
 
     //-------------------------------------------------------------------------
     #endregion
