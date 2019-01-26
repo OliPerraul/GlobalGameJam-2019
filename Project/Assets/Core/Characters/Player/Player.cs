@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
     float speed = 5; // units per second
+
+    [SerializeField]
     float turnSpeed = 90; // degrees per second
+
+    [SerializeField]
     float jumpSpeed = 8;
+
+    [SerializeField]
     float gravity = 9.8f;
+
+    [SerializeField]
     float vSpeed = 0; // current vertical velocity
  
     public void Update()
