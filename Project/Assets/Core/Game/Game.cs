@@ -9,6 +9,10 @@ namespace Core
 
     public class Game : MonoBehaviour
     {
+        [SerializeField]
+        public int MainId = 0;
+
+
         public enum StateEnum
         {
             Start,
@@ -45,7 +49,23 @@ namespace Core
 
         public void StartGame()
         {
+            switch (MainId)
+            {
+                case 0:
             SceneManager.LoadScene("Main");
+                    break;
+
+                case 1:
+                    SceneManager.LoadScene("Main1");
+                    break;
+
+                case 2:
+                    SceneManager.LoadScene("Main2");
+                    break;
+
+            }
+
+
             SetState(StateEnum.Start);
 
             Values = Config.Instance.StartValues; // copy
