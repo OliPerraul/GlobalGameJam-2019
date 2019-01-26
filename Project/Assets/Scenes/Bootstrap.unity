@@ -122,6 +122,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1303440246}
   - component: {fileID: 1303440247}
+  - component: {fileID: 1303440248}
+  - component: {fileID: 1303440249}
+  - component: {fileID: 1303440250}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -155,3 +158,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88659d610bf642b4fbdab1c4908e052f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainId: 0
+  time: 0
+  NextVisitTime: 10
+  BuyStatus: 0
+  Values:
+    VisitTimeMin: 0
+    VisitTimeMax: 0
+    HousePrice: 0
+    StartBuyStatus: 0
+    BuyStatusIncrement: 0
+    BuyStatusComplete: 0
+    StartupTime: 0
+    NumVisitorMin: 0
+    NumVisitorMax: 0
+    EndTime: 0
+    MaxHP: 0
+    MinHP: 0
+    TrapSpawnFreqMax: 0
+    TrapSpawnFreqMin: 0
+  TrapSpawnTime: 0
+  TrapSpawnTimeLimit: 0
+  State: 4
+  Collectible: {fileID: 0}
+  AICount: 0
+--- !u!114 &1303440248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303440245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97678adcd1dbc444bb9a4556da7aa2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1303440249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303440245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee00206fad06144b9c80437c4baa255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  REAgent: {fileID: 8800284632863811114, guid: e7961c30fe963144e8a09dfde6d7de15, type: 3}
+  Visitor: {fileID: 1438167825685266937, guid: 5e846076181245b4ca701e927cc72219, type: 3}
+  TextWaveClear: {fileID: 1552306817822769612, guid: 1785df71db176004fa4b3584821c01ef,
+    type: 3}
+  Collect1: {fileID: 4677888426182798257, guid: 18b08036358861f4ea94c6f7e5693533,
+    type: 3}
+  Collect2: {fileID: 0}
+  Collect3: {fileID: 0}
+  Collect4: {fileID: 0}
+  Trap1: {fileID: 0}
+  Trap2: {fileID: 0}
+  Trap3: {fileID: 0}
+--- !u!114 &1303440250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303440245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da8c9a2cfa78954894f9c2583c63a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartValues:
+    VisitTimeMin: 0
+    VisitTimeMax: 5
+    HousePrice: 10000
+    StartBuyStatus: 10
+    BuyStatusIncrement: 0.2
+    BuyStatusComplete: 1000
+    StartupTime: 2
+    NumVisitorMin: 1
+    NumVisitorMax: 3
+    EndTime: 2
+    MaxHP: 15
+    MinHP: 5
+    TrapSpawnFreqMax: 5
+    TrapSpawnFreqMin: 10

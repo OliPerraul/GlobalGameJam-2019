@@ -5,6 +5,32 @@ using UnityEngine;
 
 namespace Utils
 {
+
+   public class PointWrapper
+    {
+        public Vector3 pt;
+        public bool visited = false;
+        public PointWrapper(Vector3 p)
+        {
+            pt = p;
+        }
+    }
+
+    public static class Ran
+    {
+        public static void Shuffle<T>(this System.Random rng, T[] array)
+        {
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = rng.Next(n--);
+                T temp = array[n];
+                array[n] = array[k];
+                array[k] = temp;
+            }
+        }
+    }
+
     public enum DataTypes
     {
         Double,

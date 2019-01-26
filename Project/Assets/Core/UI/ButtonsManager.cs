@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonsManager : MonoBehaviour
+
+namespace Core.UI
 {
-    public void OnStart()
+    
+    public class ButtonsManager : MonoBehaviour
     {
-        Core.Game.Instance.Machine.SetState(Core.States.Id.Start);
+        public void OnStart()
+        {
+            Game.Instance.StartGame();
+        }
+
     }
 
 }
