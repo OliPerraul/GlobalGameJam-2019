@@ -9,6 +9,10 @@ namespace Core
 
     public class Game : MonoBehaviour
     {
+        [SerializeField]
+        public int MainId = 0;
+
+
         public enum StateEnum
         {
             Start,
@@ -50,6 +54,7 @@ namespace Core
             switch (MainId)
             {
                 case 0:
+
                     SceneManager.LoadScene("Main");
                     break;
 
@@ -62,6 +67,7 @@ namespace Core
                     break;
 
             }
+
 
             SetState(StateEnum.Start);
 
