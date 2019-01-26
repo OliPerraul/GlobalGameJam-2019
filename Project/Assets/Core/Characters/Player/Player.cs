@@ -9,6 +9,10 @@ namespace Core
     public class Player : MonoBehaviour
     {
         [SerializeField]
+        private int id = 0;
+
+
+        [SerializeField]
         float speed = 5; // units per second
 
         [SerializeField]
@@ -28,10 +32,43 @@ namespace Core
 
         public Interactables.Interactable Interactable = null;
 
+        string input_hor = "Horizontal";
+        //string input_hor = "Horizontal";
+        string intpu_Vertical = "Vertical";
+        string intpu_fire = "Fire1";
+
+
+        public void Start()
+        {
+            if (id == 0)
+            {
+                input_hor = "P1_Horizontal";
+                intpu_Vertical = "P1_Vertical";
+                intpu_fire = "P1_Fire1";
+            }
+            else
+            {
+                input_hor = "P2_Horizontal";
+                intpu_Vertical = "P2_Vertical";
+                intpu_fire = "P2_Fire1";
+
+            }
+        
+
+        }
+
 
         public void Update()
         {
-            Vector3 vel = new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
+
+            Debug.Log(input_hor);
+
+            Vector3 vel = new Vector3(Input.GetAxis(input_hor) * speed, 0, Input.GetAxis(intpu_Vertical) * speed);
+
+            if (vel.magnitude > .5f)
+            {
+                transform.rotation = Quaternion.LookRotation(vel);
+            }
 
             var controller = GetComponent<CharacterController>();//CharacterController);
             if (controller.isGrounded)
@@ -49,8 +86,7 @@ namespace Core
                             // convert vel to displacement and Move the character:
             controller.Move(vel * Time.deltaTime);
 
-            // Lay trap
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown(intpu_fire))
             {
                 if (Interactable != null)
                 {
@@ -72,7 +108,7 @@ namespace Core
 
         public void LayTrap()
         {
-            Instantiate(Collectible.Trap, transform.position, Quaternion.identity);
+            Instantiate(Collectible.Trap, transform.position+Vector3.up*.5f, Quaternion.identity);
             Collectible = null; //no more trap to lay
         }
 
