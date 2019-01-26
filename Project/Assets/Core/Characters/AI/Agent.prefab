@@ -145,8 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6cd61c7e1ac74a2fae63385189a56a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visitingPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   agentTransform: {fileID: 4444390745423314156}
   wanderScope: 15
   currentState: 1
   wanderTime: 3
   idleTime: 3
+  waitingTime: 7

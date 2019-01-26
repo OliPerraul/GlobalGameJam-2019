@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class VisitorAI : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class VisitorAI : MonoBehaviour
     public enum State
     {
         Wander,
-        Idle
+        Idle,
+        Chase
     }
     
+    [Tooltip("Get the reference of the visitor's position")]
+    public Transform visitorTransform;
     [Tooltip("Get the reference of the agent's position")]
     public Transform agentTransform;
     [Tooltip("The wander range of the agent")]
@@ -28,7 +32,7 @@ public class VisitorAI : MonoBehaviour
     /// <summary>
     /// The agent for Nav mesh.
     /// </summary>
-    private UnityEngine.AI.NavMeshAgent _agent;
+    private UnityEngine.AI.NavMeshAgent _visitor;
     
     private float _stateTime;
     #endregion
@@ -40,7 +44,7 @@ public class VisitorAI : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        _agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        _visitor = GetComponent<UnityEngine.AI.NavMeshAgent>();
         _stateTime = 0;
     }
     //-------------------------------------------------------------------------
@@ -71,20 +75,23 @@ public class VisitorAI : MonoBehaviour
             case State.Wander:
                 UpdateWanderState();
                 break;
+            case State.Chase:
+                UpdateChaseState();
+                break;
         }
     }
-    
+
     /// <summary>
     /// Updates the state of the wander.
     /// </summary>
     void UpdateWanderState()
     {
         Vector3 randomRange = new Vector3 ( 
-        (Random.value - 0.5f) * 2 * wanderScope, 0, 
-        (Random.value - 0.5f) * 2 * wanderScope);
+        (UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0, 
+        (UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
         
-        Vector3 nextDestination = agentTransform.position + randomRange;
-        _agent.destination = nextDestination;
+        Vector3 nextDestination = visitorTransform.position + randomRange;
+        _visitor.destination = nextDestination;
 
         _stateTime += Time.deltaTime;
         
@@ -92,6 +99,12 @@ public class VisitorAI : MonoBehaviour
         {
             _stateTime = 0;
             currentState = State.Idle;
+        }
+        
+        if (agentTransform.GetComponent<AgentAI>().isWalk)
+        {
+            _stateTime = 0;
+            currentState = State.Chase;
         }
 
         Debug.Log("Wander Time: " + _stateTime);
@@ -102,7 +115,7 @@ public class VisitorAI : MonoBehaviour
     /// </summary>
     void UpdateIdleState()
     {
-        _agent.destination = agentTransform.position;
+        _visitor.destination = visitorTransform.position;
         _stateTime += Time.deltaTime;
         
         if (_stateTime > idleTime)
@@ -112,6 +125,19 @@ public class VisitorAI : MonoBehaviour
         }
 
         Debug.Log("Idle Time: " + _stateTime);
+    }
+    
+    /// <summary>
+    /// Updates the state of the chase.
+    /// </summary>
+    private void UpdateChaseState()
+    {
+        _visitor.destination = agentTransform.position;
+        
+        if (!agentTransform.GetComponent<AgentAI>().isWalk)
+        {
+            currentState = State.Idle;
+        }
     }
     //-------------------------------------------------------------------------
     #endregion
