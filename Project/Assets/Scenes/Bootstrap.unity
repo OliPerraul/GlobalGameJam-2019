@@ -179,6 +179,8 @@ MonoBehaviour:
     TrapSpawnFreqMin: 0
   TrapSpawnTime: 0
   TrapSpawnTimeLimit: 0
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   State: 4
   Collectible: {fileID: 0}
   AICount: 0
@@ -207,6 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   REAgent: {fileID: 8800284632863811114, guid: e7961c30fe963144e8a09dfde6d7de15, type: 3}
+  Player1: {fileID: 1201293083078579786, guid: 8818c1d72c84feb4e93ff545a1e4c566, type: 3}
+  Player2: {fileID: 1201293083078579786, guid: 5dd0192ee23553e4f904f41711f646c6, type: 3}
   Visitor: {fileID: 1438167825685266937, guid: 5e846076181245b4ca701e927cc72219, type: 3}
   TextWaveClear: {fileID: 1552306817822769612, guid: 1785df71db176004fa4b3584821c01ef,
     type: 3}

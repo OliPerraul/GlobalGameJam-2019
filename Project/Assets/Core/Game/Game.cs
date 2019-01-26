@@ -24,7 +24,10 @@ namespace Core
 
         public static Game Instance;
 
-        public int MainId = 0;
+        //public int MainId = 0;
+
+        int numPlayers = 0;
+
 
         public OnVisit OnVisitHandler;
         public OnBuyStatusChanged OnBuyStatusChangedHandler;
@@ -37,6 +40,11 @@ namespace Core
 
         public float TrapSpawnTime = 0f;
         public float TrapSpawnTimeLimit = 0f;
+
+
+        public GameObject player1;
+        public GameObject player2;
+
 
         public StateEnum State = StateEnum.StartScreen;
 
@@ -55,7 +63,7 @@ namespace Core
         }
 
 
-        public void StartGame()
+        public void StartGame(int i = 0)
         {
             switch (MainId)
             {
@@ -80,7 +88,69 @@ namespace Core
             Values = Config.Instance.StartValues; // copy
             NextVisitTime = Random.Range(Config.Instance.StartValues.VisitTimeMin, Config.Instance.StartValues.VisitTimeMax);
 
+            numPlayers = i;
+            Invoke("StartUP", 1f);
+           
+
         }
+
+
+        public void StartUP()
+        {
+            int i = numPlayers;
+            if (i == 0)
+            {
+                player1 =
+                Instantiate(Library.Instance.Player1,
+                Level.Instance.SpawnPointP1.transform.position,
+                Quaternion.identity);
+
+                Level.Instance.player = player1.GetComponentInChildren<Player>();
+
+                CompleteProject.CameraFollow.Instance.target = Level.Instance.player.transform;
+                //Level.Instance.player = player1.GetComponentInChildren<Player>();
+
+            }
+            else if (i == 1)
+            {
+                player2 =
+                Instantiate(Library.Instance.Player2,
+                Level.Instance.SpawnPointP2.transform.position,
+                Quaternion.identity);
+
+                Level.Instance.player = player2.GetComponentInChildren<Player>();
+                //Level.Instance.player = player2.GetComponentInChildren<Player>();
+
+                CompleteProject.CameraFollow.Instance.target = Level.Instance.player.transform;
+                CompleteProject.CameraFollow.Instance.DoStart();
+
+
+
+            }
+            else if (i == 2)
+            {
+                player1 =
+                Instantiate(Library.Instance.Player1,
+                Level.Instance.SpawnPointP1.transform.position,
+                Quaternion.identity);
+
+                player2 =
+                Instantiate(Library.Instance.Player2,
+                Level.Instance.SpawnPointP2.transform.position,
+                Quaternion.identity);
+
+                Level.Instance.player = player1.GetComponentInChildren<Player>();
+                var p2t = player2.GetComponentInChildren<Player>();
+                Level.Instance.player2 = p2t;
+
+                CompleteProject.CameraFollow.Instance.target = Level.Instance.player.transform;
+                CompleteProject.CameraFollow.Instance.target2 = p2t.transform;
+                CompleteProject.CameraFollow.Instance.DoStart();
+
+            }
+        }
+
+
 
         public void EndGame()
         {

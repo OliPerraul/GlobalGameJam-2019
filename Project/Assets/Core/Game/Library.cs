@@ -17,6 +17,14 @@ namespace Core
         [SerializeField]
         public GameObject REAgent;
 
+
+        [SerializeField]
+        public GameObject Player1;
+
+        [SerializeField]
+        public GameObject Player2;
+
+
         [SerializeField]
         public GameObject Visitor;
 
