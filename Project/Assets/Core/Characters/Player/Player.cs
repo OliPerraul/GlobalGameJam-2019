@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
             vSpeed = 0; // grounded character has vSpeed = 0...
             if (Input.GetKeyDown("space"))
             { // unless it jumps:
-                vSpeed = jumpSpeed;
+                //NO JUMP lol
+                //vSpeed = jumpSpeed;
             }
         }
         // apply gravity acceleration to vertical speed:
