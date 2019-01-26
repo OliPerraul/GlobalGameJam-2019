@@ -1,42 +1,85 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class Player : MonoBehaviour
+namespace Core
 {
-    [SerializeField]
-    float speed = 5; // units per second
 
-    [SerializeField]
-    float turnSpeed = 90; // degrees per second
-
-    [SerializeField]
-    float jumpSpeed = 8;
-
-    [SerializeField]
-    float gravity = 9.8f;
-
-    [SerializeField]
-    float vSpeed = 0; // current vertical velocity
- 
-    public void Update()
+    public class Player : MonoBehaviour
     {
-        Vector3 vel = new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
+        [SerializeField]
+        float speed = 5; // units per second
 
-        var controller = GetComponent<CharacterController>();//CharacterController);
-        if (controller.isGrounded)
+        [SerializeField]
+        float turnSpeed = 90; // degrees per second
+
+        [SerializeField]
+        float jumpSpeed = 8;
+
+        [SerializeField]
+        float gravity = 9.8f;
+
+        [SerializeField]
+        float vSpeed = 0; // current vertical velocity
+
+
+        public Collectibles.Resource Collectible;
+
+        public Interactables.Interactable Interactable = null;
+
+
+        public void Update()
         {
-            vSpeed = 0; // grounded character has vSpeed = 0...
-            if (Input.GetKeyDown("space"))
-            { // unless it jumps:
-                //NO JUMP lol
-                //vSpeed = jumpSpeed;
+            Vector3 vel = new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
+
+            var controller = GetComponent<CharacterController>();//CharacterController);
+            if (controller.isGrounded)
+            {
+                vSpeed = 0; // grounded character has vSpeed = 0...
+                if (Input.GetKeyDown("space"))
+                { // unless it jumps:
+                  //NO JUMP lol
+                  //vSpeed = jumpSpeed;
+                }
             }
+            // apply gravity acceleration to vertical speed:
+            vSpeed -= gravity * Time.deltaTime;
+            vel.y = vSpeed; // include vertical speed in vel
+                            // convert vel to displacement and Move the character:
+            controller.Move(vel * Time.deltaTime);
+
+            // Lay trap
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (Interactable != null)
+                {
+                    Interactable.Interact();
+                }
+                else
+                if (Collectible != null)
+                {
+                    LayTrap();
+                }
+            }
+
         }
-        // apply gravity acceleration to vertical speed:
-        vSpeed -= gravity * Time.deltaTime;
-        vel.y = vSpeed; // include vertical speed in vel
-                        // convert vel to displacement and Move the character:
-        controller.Move(vel * Time.deltaTime);
+
+        public void Collect(Collectibles.Resource res)
+        {
+            Collectible = res;
+        }
+
+        public void LayTrap()
+        {
+            Instantiate(Collectible.Trap, transform.position, Quaternion.identity);
+            Collectible = null; //no more trap to lay
+        }
+
+        public void Interact()
+        {
+            
+        }
+
     }
 }

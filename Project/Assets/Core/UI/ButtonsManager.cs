@@ -10,7 +10,7 @@ namespace Core.UI
     {
         public void OnStart()
         {
-            Core.Game.Instance.Machine.SetState(Core.States.Id.Start);
+            Game.Instance.StartGame();
         }
 
     }
