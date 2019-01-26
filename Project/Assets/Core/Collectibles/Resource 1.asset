@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996a60896c1c8bc4b8faaec52a4200c7, type: 3}
   m_Name: Resource 1
   m_EditorClassIdentifier: 
-  Id: 0
+  Trap: {fileID: 2965407320840371693, guid: d9a3a369a8aa25243813377036291780, type: 3}
