@@ -24,6 +24,8 @@ namespace Core
 
         public static Game Instance;
 
+        public int MainId = 0;
+
         public OnVisit OnVisitHandler;
         public OnBuyStatusChanged OnBuyStatusChangedHandler;
 
@@ -52,7 +54,8 @@ namespace Core
             switch (MainId)
             {
                 case 0:
-            SceneManager.LoadScene("Main");
+
+                    SceneManager.LoadScene("Main");
                     break;
 
                 case 1:
