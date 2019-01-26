@@ -181,6 +181,7 @@ MonoBehaviour:
   TrapSpawnTimeLimit: 0
   State: 4
   Collectible: {fileID: 0}
+  AICount: 0
 --- !u!114 &1303440248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   REAgent: {fileID: 8800284632863811114, guid: e7961c30fe963144e8a09dfde6d7de15, type: 3}
   Visitor: {fileID: 1438167825685266937, guid: 5e846076181245b4ca701e927cc72219, type: 3}
+  TextWaveClear: {fileID: 1552306817822769612, guid: 1785df71db176004fa4b3584821c01ef,
+    type: 3}
   Collect1: {fileID: 4677888426182798257, guid: 18b08036358861f4ea94c6f7e5693533,
     type: 3}
   Collect2: {fileID: 0}

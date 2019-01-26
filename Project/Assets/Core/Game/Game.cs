@@ -182,11 +182,11 @@ namespace Core
 
         public void OnWaveCleared()
         {
-
+            Instantiate(Library.Instance.TextWaveClear, UI.HUD.Instance.transform);
+            SetState(StateEnum.Start);
 
         }
-
-
+        
 
         public void Update()
         {

@@ -214,7 +214,7 @@ MonoBehaviour:
   speed: 10
   turnSpeed: 90
   jumpSpeed: 8
-  gravity: 9.8
+  gravity: 40
   vSpeed: 0
   Collectible: {fileID: 0}
   Interactable: {fileID: 0}

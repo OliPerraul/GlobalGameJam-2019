@@ -20,6 +20,8 @@ namespace Core
         [SerializeField]
         public GameObject Visitor;
 
+        [SerializeField]
+        public GameObject TextWaveClear;
 
 
         [SerializeField]
