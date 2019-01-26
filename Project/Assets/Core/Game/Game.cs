@@ -24,7 +24,7 @@ namespace Core
 
         public static Game Instance;
 
-        public int MainId = 0;
+        //public int MainId = 0;
 
         public OnVisit OnVisitHandler;
         public OnBuyStatusChanged OnBuyStatusChangedHandler;
