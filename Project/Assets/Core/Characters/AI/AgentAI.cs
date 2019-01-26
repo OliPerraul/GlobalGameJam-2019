@@ -50,12 +50,36 @@ public class AgentAI : MonoBehaviour
 
     private bool _isWalk = false;
 
-    private List<Transform> _visitingPos = new List<Transform>();
+    //private List<Transform> _visitingPos = new List<Transform>();
 
     private int _posIndex;
     #endregion
 
     #region Init
+
+    private List<Vector3> mySnappointsBottom;
+    private List<Vector3> mySnappointsUp;
+    private List<Vector3> snapPointsCurrent;
+
+    public void RegisterSnapPoints(Vector3[] snappointsBottom, Vector3[] snappointsUP)
+    {
+        this.mySnappointsBottom = new List<Vector3>(snappointsBottom.Length);//];
+        for (int i = 0; i < snappointsBottom.Length; i++)
+        {
+            this.mySnappointsBottom.Add(snappointsBottom[i]);
+        }
+
+        this.mySnappointsUp = new List<Vector3>(snappointsUP.Length);// /;/];
+        for (int i = 0; i < snappointsUP.Length; i++)
+        {
+            this.mySnappointsUp.Add(snappointsUP[i]);
+        }
+
+        // Start with bottom snap point
+        snapPointsCurrent = mySnappointsBottom;
+
+    }
+
     //-------------------------------------------------------------------------
     /// <summary>
     /// Get component of everything.
@@ -64,7 +88,7 @@ public class AgentAI : MonoBehaviour
     {
         _agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         _stateTime = 0;
-        _visitingPos.AddRange(visitingPos);
+        //_visitingPos.AddRange(visitingPos);
         
     }
     //-------------------------------------------------------------------------
@@ -110,9 +134,9 @@ public class AgentAI : MonoBehaviour
 
                 // THE POINT HAS TO BE ON THE NAVMESH
 
-                Vector3 result = _visitingPos[_posIndex].position; // NOT GOOD
+                Vector3 result = snapPointsCurrent[_posIndex]; // NOT GOOD
                 NavMeshHit hit;
-                if (NavMesh.SamplePosition(_visitingPos[_posIndex].position, out hit, 2.0f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(snapPointsCurrent[_posIndex], out hit, 2.0f, NavMesh.AllAreas))
                 {
                     result = hit.position;
                     //return true;
@@ -207,13 +231,13 @@ public class AgentAI : MonoBehaviour
     /// </summary>
     private void SelectNextPos()
     {
-        if (_visitingPos.Count == 0)
+        if (snapPointsCurrent.Count == 0) // no more snapoints
         {
             Debug.Log("Finish the visiting");
             return;
         }
         // Have to consider the data type conversion.
-        _posIndex = UnityEngine.Random.Range(0, _visitingPos.Count);
+        _posIndex = UnityEngine.Random.Range(0, snapPointsCurrent.Count);
         //Debug.Log(_visitingPos[_posIndex].localPosition); // NO LOCAL POS PLZ
         //currentState = State.Walk;
         SetState(State.Walk);
@@ -232,7 +256,7 @@ public class AgentAI : MonoBehaviour
             Debug.Log("Idle");
             //currentState = State.Idle;
             SetState(State.Idle);
-            _visitingPos.Remove(_visitingPos[_posIndex]);
+            snapPointsCurrent.Remove(snapPointsCurrent[_posIndex]);
         }
         
     }

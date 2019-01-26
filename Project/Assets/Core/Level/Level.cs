@@ -10,6 +10,14 @@ namespace Core
 
     public class Level : MonoBehaviour
     {
+        public GameObject UpperSnapPoints;
+        [HideInInspector]
+        public Vector3[] UpperSnapPointsArray;
+
+        public GameObject DownSnapPoints;
+        [HideInInspector]
+        public Vector3[] DownSnapPointsArray;
+
         [SerializeField]
         public GameObject SpawnPoint;
 
@@ -49,6 +57,23 @@ namespace Core
         public void Awake()
         {
             Instance = this;
+
+            UpperSnapPointsArray = new Vector3[UpperSnapPoints.transform.childCount];
+            int i = 0;
+            foreach (Transform child in UpperSnapPoints.transform)
+            {
+                UpperSnapPointsArray[i] = child.position; i++;
+                //child is your child transform
+            }
+
+            DownSnapPointsArray = new Vector3[DownSnapPoints.transform.childCount];
+            i = 0;
+            foreach (Transform child in DownSnapPoints.transform)
+            {
+                DownSnapPointsArray[i] = child.position; i++;
+                //child is your child transform
+            }
+
         }
         
         public void Update()

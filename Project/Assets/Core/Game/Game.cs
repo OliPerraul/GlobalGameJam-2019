@@ -82,10 +82,15 @@ namespace Core
                     NextVisitTime = -1; // TODO
                     BuyStatus = Values.StartBuyStatus;
                     State = StateEnum.Visit;
-                    GameObject inst =
+
+
+                    GameObject reAgent =
                         Instantiate(Library.Instance.REAgent,
                         Level.Instance.SpawnPoint.transform.position,
                         Quaternion.identity);
+
+                    AgentAI ai = reAgent.GetComponent<AgentAI>();
+                    ai.RegisterSnapPoints(Level.Instance.DownSnapPointsArray, Level.Instance.UpperSnapPointsArray);
 
                     if (OnVisitHandler != null) OnVisitHandler.Invoke();
                     break;

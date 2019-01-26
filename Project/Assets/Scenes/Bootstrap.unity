@@ -169,6 +169,7 @@ MonoBehaviour:
     BuyStatusIncrement: 0
     BuyStatusComplete: 0
     StartupTime: 0
+    EndTime: 0
   State: 0
   Collectible: {fileID: 0}
 --- !u!114 &1303440248
@@ -195,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee00206fad06144b9c80437c4baa255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  REAgent: {fileID: 3076775696551506125, guid: 572d4de33927a52438d8f9bec47e8ea9, type: 3}
+  REAgent: {fileID: 7759073939661627433, guid: 6aa53a86d1e9744518d4d89474b6a3cf, type: 3}
   Buyer: {fileID: 318293046252155163, guid: 6b3dcbf52c122274ba5340445123277f, type: 3}
   Collect1: {fileID: 4677888426182798257, guid: 18b08036358861f4ea94c6f7e5693533,
     type: 3}
@@ -223,5 +224,6 @@ MonoBehaviour:
     HousePrice: 10000
     StartBuyStatus: 10
     BuyStatusIncrement: 0.2
-    BuyStatusComplete: 100
+    BuyStatusComplete: 1000
     StartupTime: 2
+    EndTime: 0
