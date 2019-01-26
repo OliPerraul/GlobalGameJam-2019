@@ -10,6 +10,16 @@ namespace Core
 
     public class Level : MonoBehaviour
     {
+        public Collider Bounds;
+
+        public GameObject Entrance;
+
+        public GameObject Exit;
+
+        public GameObject CollectibleSnaps;
+        [HideInInspector]
+        public Vector3[] CollectibleSnapsArray;
+
         public GameObject UpperSnapPoints;
         [HideInInspector]
         public Vector3[] UpperSnapPointsArray;
@@ -18,8 +28,14 @@ namespace Core
         [HideInInspector]
         public Vector3[] DownSnapPointsArray;
 
+
         [SerializeField]
         public GameObject SpawnPoint;
+
+        [SerializeField]
+        public GameObject[] SpawnVisitors;
+
+
 
         [SerializeField]
         private GameObject Upper;
@@ -58,8 +74,17 @@ namespace Core
         {
             Instance = this;
 
-            UpperSnapPointsArray = new Vector3[UpperSnapPoints.transform.childCount];
+            CollectibleSnapsArray = new Vector3[CollectibleSnaps.transform.childCount];
             int i = 0;
+            foreach (Transform child in CollectibleSnaps.transform)
+            {
+                CollectibleSnapsArray[i] = child.position; i++;
+                //child is your child transform
+            }
+
+
+            UpperSnapPointsArray = new Vector3[UpperSnapPoints.transform.childCount];
+            i = 0;
             foreach (Transform child in UpperSnapPoints.transform)
             {
                 UpperSnapPointsArray[i] = child.position; i++;

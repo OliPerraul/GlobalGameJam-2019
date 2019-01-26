@@ -7,6 +7,17 @@ using UnityEngine.AI;
 public class AgentAI : MonoBehaviour
 {
 
+    public float MAXHP = 0;
+    public float HP;
+
+ 
+    public delegate void OnArrivedToDestination();
+    public OnArrivedToDestination OnArrivedToDestinationHandler;
+
+    public delegate void OnLeaderExited();
+    public OnLeaderExited OnLeaderWantsExitHandler; // the pack follwos
+
+
     #region Public Field
     /// <summary>
     /// Set up the Agent State.
@@ -15,7 +26,11 @@ public class AgentAI : MonoBehaviour
     {
         Wander,
         Idle,
-        Walk
+        Walk,
+        Decision,
+        EnterHouse,
+        ExitHouse
+
     }
     
     [Tooltip("All the visit positions")]
@@ -25,12 +40,14 @@ public class AgentAI : MonoBehaviour
     [Tooltip("The wander range of the agent")]
     public float wanderScope = 15;
     [Tooltip("The current state of the agent")]
-    public State currentState;
+    public State currentState;// = State.EnterHouse;
+
 
     public float wanderTime = 3;
     public float idleTime = 3;
     public float waitingTime = 7;
     
+
     public bool isWalk
     {
         get { return _isWalk; }
@@ -57,22 +74,22 @@ public class AgentAI : MonoBehaviour
 
     #region Init
 
-    private List<Vector3> mySnappointsBottom;
-    private List<Vector3> mySnappointsUp;
-    private List<Vector3> snapPointsCurrent;
+    private List<Utils.PointWrapper> mySnappointsBottom;
+    private List<Utils.PointWrapper> mySnappointsUp;
+    private List<Utils.PointWrapper> snapPointsCurrent;
 
     public void RegisterSnapPoints(Vector3[] snappointsBottom, Vector3[] snappointsUP)
     {
-        this.mySnappointsBottom = new List<Vector3>(snappointsBottom.Length);//];
+        this.mySnappointsBottom = new List<Utils.PointWrapper>(snappointsBottom.Length);//];
         for (int i = 0; i < snappointsBottom.Length; i++)
         {
-            this.mySnappointsBottom.Add(snappointsBottom[i]);
+            this.mySnappointsBottom.Add(new Utils.PointWrapper(snappointsBottom[i]));
         }
 
-        this.mySnappointsUp = new List<Vector3>(snappointsUP.Length);// /;/];
+        this.mySnappointsUp = new List<Utils.PointWrapper>(snappointsUP.Length);// /;/];
         for (int i = 0; i < snappointsUP.Length; i++)
         {
-            this.mySnappointsUp.Add(snappointsUP[i]);
+            this.mySnappointsUp.Add(new Utils.PointWrapper(snappointsUP[i]));
         }
 
         // Start with bottom snap point
@@ -104,9 +121,32 @@ public class AgentAI : MonoBehaviour
         StateSwitch();
     }
 
-    //ADDED
-    void SetState(State s)
+
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
+        for (int i = 0; i < 30; i++)
+        {
+            Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+        }
+        result = Vector3.zero;
+        return false;
+    }
+
+    //ADDED
+    public void SetState(State s)
+    {
+        if (currentState == State.ExitHouse) // EXIT HOUSE STATES OVERRIDES EVERYTHING
+            return;
+
+        Vector3 result = Vector3.zero;
+
+        NavMeshHit hit;
         currentState = s;
 
         switch (currentState)
@@ -117,15 +157,42 @@ public class AgentAI : MonoBehaviour
                 break;
 
 
-            case State.Wander:
-                Vector3 randomRange = new Vector3(
-                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0,
-                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
+            case State.ExitHouse:
+                _agent.destination = Core.Level.Instance.Exit.transform.position;
+                if (OnLeaderWantsExitHandler != null) OnLeaderWantsExitHandler.Invoke();
 
-                Vector3 nextDestination = agentTransform.position + randomRange;
-                _agent.destination = nextDestination;
                 break;
 
+            case State.Wander:
+                
+                //return true;
+                // else were in trouble
+
+                result = agentTransform.position;
+
+                int count = 0;
+                while (!RandomPoint(agentTransform.position, wanderScope, out result)){ if (count == 20) break; }
+                                      
+
+                 //Vector3 nextDestination = pos;
+                 _agent.destination = result;
+
+                break;
+
+
+            case State.Decision:
+                if (snapPointsCurrent == mySnappointsBottom)
+                {
+                    snapPointsCurrent = mySnappointsUp;
+                    SetState(State.Walk);
+                }
+                else
+                {
+                    SetState(State.ExitHouse);
+                }
+
+
+                break;
 
             case State.Walk:
                 //UpdateChaseState();
@@ -134,9 +201,8 @@ public class AgentAI : MonoBehaviour
 
                 // THE POINT HAS TO BE ON THE NAVMESH
 
-                Vector3 result = snapPointsCurrent[_posIndex]; // NOT GOOD
-                NavMeshHit hit;
-                if (NavMesh.SamplePosition(snapPointsCurrent[_posIndex], out hit, 2.0f, NavMesh.AllAreas))
+                result = snapPointsCurrent[_posIndex].pt; ; // NOT GOOD
+                if (NavMesh.SamplePosition(snapPointsCurrent[_posIndex].pt, out hit, 2.0f, NavMesh.AllAreas))
                 {
                     result = hit.position;
                     //return true;
@@ -166,6 +232,9 @@ public class AgentAI : MonoBehaviour
                 break;
             case State.Walk:
                 UpdateWalkState();
+                break;
+            case State.ExitHouse:
+                UpdateExitState();
                 break;
         }
     }
@@ -237,7 +306,21 @@ public class AgentAI : MonoBehaviour
             return;
         }
         // Have to consider the data type conversion.
-        _posIndex = UnityEngine.Random.Range(0, snapPointsCurrent.Count);
+
+        int count = 0;
+        do
+        {
+            count++;
+            _posIndex = UnityEngine.Random.Range(0, snapPointsCurrent.Count);
+            if (count >= snapPointsCurrent.Count)
+            {
+                SetState(State.Decision); // ALL POINTS VISITED
+                return;
+            }
+        }
+        while (snapPointsCurrent[_posIndex].visited);
+
+
         //Debug.Log(_visitingPos[_posIndex].localPosition); // NO LOCAL POS PLZ
         //currentState = State.Walk;
         SetState(State.Walk);
@@ -251,14 +334,31 @@ public class AgentAI : MonoBehaviour
         _isWalk = true;
         //_agent.destination = _visitingPos[_posIndex].position;
         if (Vector3.Distance(agentTransform.position, _agent.destination) < 
-            0.5)
+            2)
         {
             Debug.Log("Idle");
             //currentState = State.Idle;
             SetState(State.Idle);
-            snapPointsCurrent.Remove(snapPointsCurrent[_posIndex]);
+            snapPointsCurrent[_posIndex].visited = true;
+
+            if(OnArrivedToDestinationHandler!= null)OnArrivedToDestinationHandler.Invoke();
+
+
         }
         
+    }
+
+    private void UpdateExitState()
+    {
+        //_isWalk = true;
+        //_agent.destination = _visitingPos[_posIndex].position;
+        if (Vector3.Distance(agentTransform.position, Core.Level.Instance.Exit.transform.position) <
+            2)
+        {
+            Destroy(gameObject);
+
+        }
+
     }
 
 

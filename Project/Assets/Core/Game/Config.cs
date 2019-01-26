@@ -28,8 +28,29 @@ namespace Core
         [SerializeField]
         public float StartupTime;
 
+
+        [SerializeField]
+        public float NumVisitorMin;
+
+        [SerializeField]
+        public float NumVisitorMax;
+
+
         [SerializeField]
         public float EndTime;
+
+        [SerializeField]
+        public float MaxHP;
+
+        [SerializeField]
+        public float MinHP;
+
+
+        [SerializeField]
+        public float TrapSpawnFreqMax;
+
+        [SerializeField]
+        public float TrapSpawnFreqMin;
 
     }
        

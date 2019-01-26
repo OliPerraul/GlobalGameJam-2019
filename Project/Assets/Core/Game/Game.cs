@@ -30,9 +30,15 @@ namespace Core
         public float BuyStatus = 0f;
         public ConfigValues Values;
 
-        public StateEnum State;
+
+        public float TrapSpawnTime = 0f;
+        public float TrapSpawnTimeLimit = 0f;
+
+        public StateEnum State = StateEnum.StartScreen;
 
         public Collectibles.Resource Collectible;
+
+        public int AICount = 0;
 
 
         public void Awake()
@@ -101,14 +107,43 @@ namespace Core
                     State = StateEnum.Visit;
 
 
+                    //INST AGENT (VISITOR AND AGENTS ARE THE SAME NOW)
                     GameObject reAgent =
                         Instantiate(Library.Instance.REAgent,
                         Level.Instance.SpawnPoint.transform.position,
                         Quaternion.identity);
 
-                    AgentAI ai = reAgent.GetComponent<AgentAI>();
+                    AgentAI ai = reAgent.GetComponentInChildren<AgentAI>();
                     ai.RegisterSnapPoints(Level.Instance.DownSnapPointsArray, Level.Instance.UpperSnapPointsArray);
 
+                    ai.HP = Random.Range(Values.MinHP, Values.MaxHP)*2;
+                    ai.MAXHP = ai.HP;
+
+                    // INSTANTIATE VISIT
+                    AICount = 1;
+                    for (int i = 0; i < Random.Range(Values.NumVisitorMin, Values.NumVisitorMax); i++)
+                    {
+                        AICount++;
+                        GameObject visitor =
+                        Instantiate(Library.Instance.Visitor,
+                        Level.Instance.SpawnVisitors[i].transform.position,
+                        Quaternion.identity);
+
+                        VisitorAI vai = visitor.GetComponentInChildren<VisitorAI>();
+
+
+                        vai.agentTransform = ai.transform;
+
+                        // Register on agent arrived event
+                        ai.OnArrivedToDestinationHandler += vai.OnREAgentArrivedToDest;
+                        ai.OnLeaderWantsExitHandler += vai.OnLeaderWantsQuit;
+
+                        vai.HP = Random.Range(Values.MinHP, Values.MaxHP);
+                        vai.MAXHP = vai.HP;
+
+                    }
+
+  
                     if (OnVisitHandler != null) OnVisitHandler.Invoke();
                     break;
 
@@ -120,8 +155,58 @@ namespace Core
         }
 
 
+        public void SpawnTrap()
+        {
+            GameObject[] choices =
+                { Library.Instance.Collect1,
+                Library.Instance.Collect2 ,
+                Library.Instance.Collect3 ,
+                Library.Instance.Collect4 };
+
+            int choiceIdx = 0;
+            do
+            {
+                choiceIdx = Random.Range(0, choices.Length);
+
+
+            }
+            while (choices[choiceIdx] == null);
+
+
+            int iidx = Random.Range(0, Level.Instance.CollectibleSnapsArray.Length);
+
+            Vector3 spwnPt = Level.Instance.CollectibleSnapsArray[iidx];
+            Instantiate(choices[choiceIdx], spwnPt, Quaternion.identity);
+        }
+
+
+        public void OnWaveCleared()
+        {
+
+
+        }
+
+
+
         public void Update()
         {
+            switch (State)
+            {
+                case StateEnum.AwaitingVisitor:
+                case StateEnum.Visit:
+                    TrapSpawnTime += Time.deltaTime;
+
+                    if (TrapSpawnTime >= TrapSpawnTimeLimit)
+                    {
+                        SpawnTrap();
+                        TrapSpawnTime = 0;
+                        TrapSpawnTimeLimit = Random.Range(Values.TrapSpawnFreqMin, Values.TrapSpawnFreqMax);
+                    }
+
+                break;
+
+            }
+
             switch(State)
             {
                 case StateEnum.Start:
@@ -148,7 +233,10 @@ namespace Core
 
                 case StateEnum.Visit:
                     // UPDATE VISIT
+                    if (Values.BuyStatusIncrement < 0)
+                        Values.BuyStatusIncrement = 1;
                     BuyStatus += Values.BuyStatusIncrement;
+
                     if (OnBuyStatusChangedHandler != null) OnBuyStatusChangedHandler.Invoke();
 
                     if (BuyStatus >= Values.BuyStatusComplete)

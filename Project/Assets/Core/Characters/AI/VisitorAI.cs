@@ -1,8 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class VisitorAI : MonoBehaviour
 {
+    public float MAXHP = 0;
+    public float HP = 0;
+
 
     #region Public Field
     /// <summary>
@@ -12,13 +17,19 @@ public class VisitorAI : MonoBehaviour
     {
         Wander,
         Idle,
-        Chase
+        Chase,
+        ExitHouse
+
     }
     
+
     [Tooltip("Get the reference of the visitor's position")]
     public Transform visitorTransform;
     [Tooltip("Get the reference of the agent's position")]
     public Transform agentTransform;
+
+    public float arrivalScope = 15;
+
     [Tooltip("The wander range of the agent")]
     public float wanderScope = 15;
     [Tooltip("The current state of the agent")]
@@ -60,28 +71,65 @@ public class VisitorAI : MonoBehaviour
         StateSwitch();
     }
 
-    //ADDED
-    void SetState(State s)
+
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
+        for (int i = 0; i < 30; i++)
+        {
+            Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+        }
+        result = Vector3.zero;
+        return false;
+    }
+
+    //ADDED
+    public void SetState(State s)
+    {
+        if (currentState == State.ExitHouse) // EXIT HOUSE STATES OVERRIDES EVERYTHING
+            return;
+
         currentState = s;
+        Vector3 result = Vector3.zero;
 
         switch (currentState)
         {
+            //case State.ExitHouse:
+            case State.ExitHouse:
+                _visitor.destination = Core.Level.Instance.Exit.transform.position;
+                break;
+
+
             case State.Idle:
                 _visitor.destination = visitorTransform.position;
                 break;
+
             case State.Wander:
                 //UpdateWanderState();
-                Vector3 randomRange = new Vector3(
-                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope, 0,
-                (UnityEngine.Random.value - 0.5f) * 2 * wanderScope);
+                result = agentTransform.position;
 
-                Vector3 nextDestination = visitorTransform.position + randomRange;
-                _visitor.destination = nextDestination;
+                int count = 0;
+                while (!RandomPoint(agentTransform.position, wanderScope, out result)) { count++;  if (count == 20) break; }
+
+
+                //Vector3 nextDestination = pos;
+                _visitor.destination = result;
                 break;
+
+
             case State.Chase:
                 //UpdateChaseState();
-                _visitor.destination = agentTransform.position;
+                //_visitor.destination = agentTransform.position;
+
+                result = agentTransform.position;// NOT GOOD
+                count = 0;
+                while (!RandomPoint(result, arrivalScope, out result)) { count++; if (count == 20) break; }
+                _visitor.destination = result;
                 break;
         }
     }
@@ -103,6 +151,9 @@ public class VisitorAI : MonoBehaviour
                 break;
             case State.Chase:
                 UpdateChaseState();
+                break;
+            case State.ExitHouse:
+                UpdateExitState();
                 break;
         }
     }
@@ -159,9 +210,35 @@ public class VisitorAI : MonoBehaviour
         if (!agentTransform.GetComponent<AgentAI>().isWalk)
         {
             //currentState = State.Idle;
-            SetState(State.Idle);
+            SetState(State.Wander);
         }
     }
+
+
+    private void UpdateExitState()
+    {
+        //_isWalk = true;
+        //_agent.destination = _visitingPos[_posIndex].position;
+        if (Vector3.Distance(visitorTransform.position, Core.Level.Instance.Exit.transform.position) <
+            2)
+        {
+            Destroy(gameObject);
+
+        }
+
+    }
+
+
+    public void OnREAgentArrivedToDest()
+    {
+        SetState(State.Chase);
+    }
+
+    public void OnLeaderWantsQuit()
+    {
+        SetState(State.ExitHouse);
+    }
+
     //-------------------------------------------------------------------------
     #endregion
 

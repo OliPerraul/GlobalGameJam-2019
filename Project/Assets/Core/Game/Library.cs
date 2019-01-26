@@ -18,7 +18,7 @@ namespace Core
         public GameObject REAgent;
 
         [SerializeField]
-        public GameObject Buyer;
+        public GameObject Visitor;
 
 
 

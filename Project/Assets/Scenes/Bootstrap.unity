@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88659d610bf642b4fbdab1c4908e052f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainId: 0
   time: 0
   NextVisitTime: 10
   BuyStatus: 0
@@ -169,8 +170,16 @@ MonoBehaviour:
     BuyStatusIncrement: 0
     BuyStatusComplete: 0
     StartupTime: 0
+    NumVisitorMin: 0
+    NumVisitorMax: 0
     EndTime: 0
-  State: 0
+    MaxHP: 0
+    MinHP: 0
+    TrapSpawnFreqMax: 0
+    TrapSpawnFreqMin: 0
+  TrapSpawnTime: 0
+  TrapSpawnTimeLimit: 0
+  State: 4
   Collectible: {fileID: 0}
 --- !u!114 &1303440248
 MonoBehaviour:
@@ -196,8 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee00206fad06144b9c80437c4baa255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  REAgent: {fileID: 7759073939661627433, guid: 6aa53a86d1e9744518d4d89474b6a3cf, type: 3}
-  Buyer: {fileID: 318293046252155163, guid: 6b3dcbf52c122274ba5340445123277f, type: 3}
+  REAgent: {fileID: 8800284632863811114, guid: e7961c30fe963144e8a09dfde6d7de15, type: 3}
+  Visitor: {fileID: 1438167825685266937, guid: 5e846076181245b4ca701e927cc72219, type: 3}
   Collect1: {fileID: 4677888426182798257, guid: 18b08036358861f4ea94c6f7e5693533,
     type: 3}
   Collect2: {fileID: 0}
@@ -226,4 +235,10 @@ MonoBehaviour:
     BuyStatusIncrement: 0.2
     BuyStatusComplete: 1000
     StartupTime: 2
-    EndTime: 0
+    NumVisitorMin: 1
+    NumVisitorMax: 3
+    EndTime: 2
+    MaxHP: 15
+    MinHP: 5
+    TrapSpawnFreqMax: 5
+    TrapSpawnFreqMin: 10
