@@ -33,6 +33,12 @@ namespace Core
         public GameObject SpawnPoint;
 
         [SerializeField]
+        public GameObject SpawnPointP1;
+
+        [SerializeField]
+        public GameObject SpawnPointP2;
+
+        [SerializeField]
         public GameObject[] SpawnVisitors;
 
 
@@ -45,8 +51,10 @@ namespace Core
         private GameObject Stairs;
 
         [SerializeField]
-        private Player player;
+        public Player player;
 
+        [SerializeField]
+        public Player player2;
 
         private float full = 1f;
         private float none = 0f;
@@ -119,7 +127,24 @@ namespace Core
             float alpha = Mathf.Lerp(none, full, f);
             Color c = rendUpper.material.color;
             rendUpper.material.color = new Color(c.r, c.g, c.b, alpha);
-           // Debug.Log(rendUpper.material.color);
+            // Debug.Log(rendUpper.material.color);
+
+
+
+            if (player2 == null) return;
+
+            if ((Mathf.Approximately((player2.transform.position.y - alphaoffset), 0)))
+            {
+                f = ((player.transform.position.y - alphaoffset) / denum);
+
+                alpha = Mathf.Lerp(none, full, f);
+                c = rendUpper.material.color;
+                rendUpper.material.color = new Color(c.r, c.g, c.b, alpha);
+                // Debug.Log(rendUpper.material.color);
+
+            }
+
+
         }
 
     }
