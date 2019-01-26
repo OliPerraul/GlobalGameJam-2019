@@ -9,8 +9,8 @@ namespace Core
 
     public class Game : MonoBehaviour
     {
-        //[SerializeField]
-        //public int MainId = 0;
+        [SerializeField]
+        public int MainId = 0;
 
 
         public enum StateEnum
