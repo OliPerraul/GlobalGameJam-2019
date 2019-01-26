@@ -261,6 +261,12 @@ namespace Core
             Instantiate(Library.Instance.TextWaveClear, UI.HUD.Instance.transform);
             SetState(StateEnum.Start);
 
+            Instance.Values.BuyStatusIncrement += Difficulty.Instance.BuyStatusIncrementIncr;
+            Instance.Values.BuyStatusComplete += Difficulty.Instance.BuyStatusCompleteIncr;
+            Instance.Values.StartBuyStatus += Difficulty.Instance.StartBuyStatusIncr;
+            Instance.Values.MinHP += Difficulty.Instance.MinHPIncr;
+            Instance.Values.MaxHP += Difficulty.Instance.MaxHPIncr;
+
         }
         
 

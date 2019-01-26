@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 1303440248}
   - component: {fileID: 1303440249}
   - component: {fileID: 1303440250}
+  - component: {fileID: 1303440251}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -216,7 +217,8 @@ MonoBehaviour:
     type: 3}
   Collect1: {fileID: 4677888426182798257, guid: 18b08036358861f4ea94c6f7e5693533,
     type: 3}
-  Collect2: {fileID: 0}
+  Collect2: {fileID: 4677888426182798257, guid: 2c3528930809fba40b986b9f7ddd628b,
+    type: 3}
   Collect3: {fileID: 0}
   Collect4: {fileID: 0}
   Trap1: {fileID: 0}
@@ -238,9 +240,9 @@ MonoBehaviour:
     VisitTimeMin: 0
     VisitTimeMax: 5
     HousePrice: 10000
-    StartBuyStatus: 10
+    StartBuyStatus: 2
     BuyStatusIncrement: 0.2
-    BuyStatusComplete: 1000
+    BuyStatusComplete: 2500
     StartupTime: 2
     NumVisitorMin: 1
     NumVisitorMax: 3
@@ -249,3 +251,20 @@ MonoBehaviour:
     MinHP: 5
     TrapSpawnFreqMax: 5
     TrapSpawnFreqMin: 10
+--- !u!114 &1303440251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303440245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f69dd7f3fbc82c448c0be63829073a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuyStatusIncrementIncr: 1
+  BuyStatusCompleteIncr: -1
+  StartBuyStatusIncr: 0.5
+  MaxHPIncr: 2
+  MinHPIncr: 2
