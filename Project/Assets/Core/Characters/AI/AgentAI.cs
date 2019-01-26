@@ -44,6 +44,7 @@ public class AgentAI : MonoBehaviour
     /// </summary>
     private UnityEngine.AI.NavMeshAgent _agent;
     
+    [SerializeField]
     private float _stateTime;
     
     private float _waitingTime;
@@ -185,15 +186,16 @@ public class AgentAI : MonoBehaviour
         _stateTime += Time.deltaTime;
         _waitingTime += Time.deltaTime;
         
-        if (_stateTime > wanderTime)
+        if (_stateTime >= wanderTime)
         {
             _stateTime = 0;
             Debug.Log("Idle");
             //currentState = State.Idle;
             SetState(State.Idle);
+            return;
         }
         
-        if (_waitingTime > waitingTime)
+        if (_waitingTime >= waitingTime)
         {
             _stateTime = 0;
             _waitingTime = 0;
@@ -210,15 +212,16 @@ public class AgentAI : MonoBehaviour
         _stateTime += Time.deltaTime;
         _waitingTime += Time.deltaTime;
         
-        if (_stateTime > idleTime)
+        if (_stateTime >= idleTime)
         {
             _stateTime = 0;
             Debug.Log("Wander");
             //currentState = State.Wander;
             SetState(State.Wander);
+            return;
         }
         
-        if (_waitingTime > waitingTime)
+        if (_waitingTime >= waitingTime)
         {
             _stateTime = 0;
             _waitingTime = 0;
@@ -251,12 +254,12 @@ public class AgentAI : MonoBehaviour
         _isWalk = true;
         //_agent.destination = _visitingPos[_posIndex].position;
         if (Vector3.Distance(agentTransform.position, _agent.destination) < 
-            0.5)
+            2)
         {
-            Debug.Log("Idle");
+            //Debug.Log("Idle");
             //currentState = State.Idle;
-            SetState(State.Idle);
             snapPointsCurrent.Remove(snapPointsCurrent[_posIndex]);
+            SetState(State.Idle);
         }
         
     }
