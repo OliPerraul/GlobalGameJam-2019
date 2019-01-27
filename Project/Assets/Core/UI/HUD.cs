@@ -17,6 +17,10 @@ namespace Core.UI
         public Text Text;
         public string strTmplt = "Score: {}";
 
+        [SerializeField]
+        public Text TextScr;
+        public string strScrTmplt = "Highscore: {}";
+
         public void Awake()
         {
             Instance = this;
@@ -26,6 +30,7 @@ namespace Core.UI
         public void Update()
         {
             Text.text = strTmplt.Replace("{}", Game.Instance.Score.ToString());
+            TextScr.text = strScrTmplt.Replace("{}", Game.Instance.Highscore.ToString());
         }
 
 

@@ -162,6 +162,7 @@ MonoBehaviour:
   MainId: 0
   ScoreTime: 0
   Score: 0
+  Highscore: 0
   time: 0
   NextVisitTime: 10
   BuyStatus: 0
@@ -245,7 +246,7 @@ MonoBehaviour:
     VisitTimeMax: 5
     HousePrice: 10000
     StartBuyStatus: 2
-    BuyStatusIncrement: 0.2
+    BuyStatusIncrement: 2
     BuyStatusComplete: 2500
     StartupTime: 2
     NumVisitorMin: 1

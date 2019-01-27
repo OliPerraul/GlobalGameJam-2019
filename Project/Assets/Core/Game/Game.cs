@@ -24,6 +24,7 @@ namespace Core
 
         public float ScoreTime = 0f;
         public int Score = 0;
+        public int Highscore = 0;
 
 
         public static Game Instance;
@@ -70,6 +71,8 @@ namespace Core
         public void StartGame(int i = 0)
         {
             Score = 0;
+            Highscore = PlayerPrefs.GetInt("Highscore", 0);
+
 
             switch (MainId)
             {
@@ -162,7 +165,12 @@ namespace Core
 
         public void EndGame()
         {
-            SceneManager.LoadScene("StartScreen");
+            if (Score == Highscore)
+            {
+                PlayerPrefs.SetInt("Highscore", Game.Instance.Score);
+            }
+
+            SceneManager.LoadScene("Score");
             //SetState(StateEnum.StartScreen);
         }
 
@@ -299,6 +307,11 @@ namespace Core
                     {
                         ScoreTime = 0f;
                         Score += Values.ScoreIncrease;
+
+                        if (Score >= Highscore)
+                        {
+                            Highscore = Score;
+                        }
 
                     }
 
