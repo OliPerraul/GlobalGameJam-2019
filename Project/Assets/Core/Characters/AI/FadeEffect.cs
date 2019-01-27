@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FadeEffect : MonoBehaviour
 {
+    public Image[] emotions;
     public CanvasGroup textBubble;
     public float fadeTime = 1.5f;
     public float autoFadeInterval = 2f;
@@ -19,6 +21,10 @@ public class FadeEffect : MonoBehaviour
     {
         textBubble.alpha = 0;
         _randomFadeTime = Random.value * autoFadeInterval + fadeTime;
+        foreach (Image image in emotions)
+        {
+            image.enabled = false;
+        }
     }
 
     private void Update()
@@ -40,6 +46,7 @@ public class FadeEffect : MonoBehaviour
         if (_isFadedIn)
         {
             FadeIn(textBubble);
+            emotions[Random.Range(0, emotions.Length-1)].enabled = true;
             _isFadedIn = false;
         }
         else
