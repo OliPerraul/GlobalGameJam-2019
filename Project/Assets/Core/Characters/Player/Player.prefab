@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca0d956f231d354aa999701ce06d120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkanimthereshold: 0.01
   id: 0
   speed: 8
   turnSpeed: 90
@@ -231,6 +232,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.15592
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 38fb7036a00856344b070c929176705c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 839c96116c62dcc4cac4d303481c37db, type: 2}
     m_RemovedComponents:
     - {fileID: 2300000, guid: 38fb7036a00856344b070c929176705c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 38fb7036a00856344b070c929176705c, type: 3}

@@ -371,7 +371,6 @@ public class AgentAI : MonoBehaviour
         if (Vector3.Distance(agentTransform.position, Core.Level.Instance.Exit.transform.position) <
             2)
         {
-            Destroy(transform.parent.gameObject);
             //Destroy(gameObject);
             Core.Game.Instance.AICount--;
             if (Core.Game.Instance.AICount <= 0)
@@ -379,6 +378,7 @@ public class AgentAI : MonoBehaviour
                 Core.Game.Instance.AICount = 0;
                 Core.Game.Instance.OnWaveCleared();
             }
+            Destroy(transform.parent.gameObject);
 
         }
 
