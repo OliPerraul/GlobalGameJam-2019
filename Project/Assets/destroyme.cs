@@ -10,11 +10,17 @@ public class destroyme : MonoBehaviour
     float time = 0f;
 
 
+    public void Start()
+    {
+        time = 0;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        if (time <= limit)
+        if (time >= limit)
         {
             Destroy(gameObject);
         }

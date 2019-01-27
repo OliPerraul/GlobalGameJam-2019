@@ -30,6 +30,15 @@ public class AIUI : MonoBehaviour
             if (broke)
                 return;
             Image.fillAmount = agent.HP / agent.MAXHP;
+
+            if (Mathf.Approximately(Image.fillAmount, 0) || Image.fillAmount < 0)
+            {
+                Image.fillAmount = 1;
+                Image.sprite = Core.Library.Instance.spriteBroked;
+                broke = true;
+            }
+
+
         }
         else if(visit != null)
         {
