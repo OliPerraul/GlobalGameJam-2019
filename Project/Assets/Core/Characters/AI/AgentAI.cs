@@ -46,7 +46,11 @@ public class AgentAI : MonoBehaviour
     public float wanderTime = 3;
     public float idleTime = 3;
     public float waitingTime = 7;
-    
+
+
+    public Animator animator;
+    public float walkanimthereshold = 0.01f;
+
 
     public bool isWalk
     {
@@ -120,6 +124,15 @@ public class AgentAI : MonoBehaviour
     private void FixedUpdate()
     {
         StateSwitch();
+
+        if (_agent.velocity.magnitude > walkanimthereshold)
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
     }
 
 

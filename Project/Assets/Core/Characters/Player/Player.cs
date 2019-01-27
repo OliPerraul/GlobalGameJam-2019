@@ -8,6 +8,10 @@ namespace Core
 
     public class Player : MonoBehaviour
     {
+
+        [SerializeField]
+        private float walkanimthereshold = 0.01f;
+
         [SerializeField]
         private int id = 0;
 
@@ -26,6 +30,10 @@ namespace Core
 
         [SerializeField]
         float vSpeed = 0; // current vertical velocity
+
+        [SerializeField]
+        public Animator animator = null; // current vertical velocity
+
 
 
         [SerializeField]
@@ -72,6 +80,16 @@ namespace Core
             if (vel.magnitude > .5f)
             {
                 transform.rotation = Quaternion.LookRotation(vel);
+            }
+
+            if (vel.magnitude > walkanimthereshold)
+            {
+                    animator.SetBool("IsWalking", true);
+
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
             }
 
             var controller = GetComponent<CharacterController>();//CharacterController);

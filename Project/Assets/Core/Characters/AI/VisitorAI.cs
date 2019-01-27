@@ -21,7 +21,10 @@ public class VisitorAI : MonoBehaviour
         ExitHouse
 
     }
-    
+
+    [SerializeField]
+    private Animator anitor; public float walkanimthereshold = 0.01f;
+
 
     [Tooltip("Get the reference of the visitor's position")]
     public Transform visitorTransform;
@@ -69,6 +72,15 @@ public class VisitorAI : MonoBehaviour
     private void FixedUpdate()
     {
         StateSwitch();
+
+        if (_visitor.velocity.magnitude > walkanimthereshold)
+        {
+            anitor.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anitor.SetBool("IsWalking", false);
+        }
     }
 
 
