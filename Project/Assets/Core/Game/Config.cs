@@ -52,6 +52,14 @@ namespace Core
         [SerializeField]
         public float TrapSpawnFreqMin;
 
+
+        [SerializeField]
+        public int ScoreIncrease;
+
+        [SerializeField]
+        public float ScoreInterval;
+
+
     }
        
     public class Config : MonoBehaviour
