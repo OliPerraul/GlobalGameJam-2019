@@ -75,7 +75,11 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
+<<<<<<< HEAD:Project/Assets/Graphics/TextBubbleSprites/stairs_ICON.png.meta
     spriteID: 6cf12399a742f62409b3217bbf8fe798
+=======
+    spriteID: 82182b5ed60ac184eb3dace079ee1165
+>>>>>>> c28ba077b91c60bf2e72e104facda15ec2fbda3a:Project/Assets/Graphics/TextBubbleSprites/stairs_ICON.png.meta
     vertices: []
     indices: 
     edges: []

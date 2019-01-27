@@ -75,7 +75,11 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
+<<<<<<< HEAD:Project/Assets/Graphics/TextBubbleSprites/bank_ICON.png.meta
     spriteID: 3fcd751a5da542c42a60147c8915cd38
+=======
+    spriteID: 692d183c5b59c714db891f10a2fdb03f
+>>>>>>> c28ba077b91c60bf2e72e104facda15ec2fbda3a:Project/Assets/Graphics/TextBubbleSprites/bank_ICON.png.meta
     vertices: []
     indices: 
     edges: []

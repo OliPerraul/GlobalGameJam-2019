@@ -75,7 +75,11 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
+<<<<<<< HEAD:Project/Assets/Graphics/TextBubbleSprites/flower_ICON.png.meta
     spriteID: 4d1134cd1e12b4043a5cffd429815541
+=======
+    spriteID: 956fea314d451734fa876e83c195ac7e
+>>>>>>> c28ba077b91c60bf2e72e104facda15ec2fbda3a:Project/Assets/Graphics/TextBubbleSprites/flower_ICON.png.meta
     vertices: []
     indices: 
     edges: []
