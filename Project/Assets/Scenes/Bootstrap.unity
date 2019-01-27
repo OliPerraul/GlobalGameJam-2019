@@ -229,6 +229,7 @@ MonoBehaviour:
   Trap1: {fileID: 0}
   Trap2: {fileID: 0}
   Trap3: {fileID: 0}
+  spriteBroked: {fileID: 21300000, guid: d6b5ea852645742309fc9e02963c39f4, type: 3}
 --- !u!114 &1303440250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ MonoBehaviour:
     HousePrice: 10000
     StartBuyStatus: 2
     BuyStatusIncrement: 2
-    BuyStatusComplete: 2500
+    BuyStatusComplete: 25000
     StartupTime: 2
     NumVisitorMin: 1
     NumVisitorMax: 3

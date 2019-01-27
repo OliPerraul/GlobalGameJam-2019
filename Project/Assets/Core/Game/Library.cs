@@ -56,6 +56,11 @@ namespace Core
         [SerializeField]
         public GameObject Trap3;
 
+
+        [SerializeField]
+        public Sprite spriteBroked;
+
+
     }
 
 }

@@ -239,7 +239,7 @@ namespace Core
                     if (OnVisitHandler != null) OnVisitHandler.Invoke();
                     break;
 
-                case StateEnum.StartScreen:
+                case StateEnum.End:
                     EndGame();
 
                     break;

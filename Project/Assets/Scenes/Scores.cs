@@ -15,6 +15,13 @@ public class Scores : MonoBehaviour
     [SerializeField]
     public Text s;
 
+
+    [SerializeField]
+    private float lostScreenTimeLim = 5f;
+    private float time = 0f;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,12 +45,17 @@ public class Scores : MonoBehaviour
 
     public void Update()
     {
-        if (Input.anyKey)
+        if (time >= lostScreenTimeLim)
         {
-            SceneManager.LoadScene("StartScreen");
+            if (Input.anyKey)
+            {
+                SceneManager.LoadScene("StartScreen");
+            }
         }
-
-
+        else
+        {
+            time += Time.deltaTime;
+        }
     }
 
 
