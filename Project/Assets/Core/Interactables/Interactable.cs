@@ -12,20 +12,28 @@ namespace Core.Interactables
         public float interval = 30f;
         public float reduceAmount = 50f;
         public Image cooldownSlider;
+        public SpriteRenderer ring;
         
         private float currentTime = 0;
+        private Color ringColor;
         
 
         private void Start()
         {
             currentTime = 0;
             cooldownSlider.fillAmount = 0;
+            ringColor = ring.color;
+            ring.color = new Color(ringColor.r, ringColor.g, ringColor.b, 0);
         }
 
         private void Update()
         {
             currentTime += Time.deltaTime;
             cooldownSlider.fillAmount = currentTime / interval;
+            if (cooldownSlider.fillAmount >= 1.0)
+            {
+                ring.color = new Color(ringColor.r, ringColor.g, ringColor.b, 1);
+            }
         }
 
         private void OnTriggerEnter(Collider other)

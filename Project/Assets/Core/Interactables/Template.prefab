@@ -266,6 +266,7 @@ MonoBehaviour:
   interval: 30
   reduceAmount: 1000
   cooldownSlider: {fileID: 8538201498786104485}
+  ring: {fileID: 8547723672112110523}
 --- !u!222 &7382857679420576503
 CanvasRenderer:
   m_ObjectHideFlags: 0
