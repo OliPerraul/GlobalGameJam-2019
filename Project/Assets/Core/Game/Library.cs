@@ -61,6 +61,11 @@ namespace Core
         public Sprite spriteBroked;
 
 
+        //WISE
+        [SerializeField]
+        public AkState[] AkStates;
+
+
     }
 
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a06f2faf627014daf54b8e14ff0e79, type: 3}
+  m_Name: 488DC316-82AF-4589-8AA5-99A1B7079813
+  m_EditorClassIdentifier: 
+  objectName: Defeat
+  id: 1593864692
+  guid: 488DC316-82AF-4589-8AA5-99A1B7079813
+  WwiseStateGroupReference: {fileID: 11400000, guid: fc62f8a7ec63109478fc03d56fc4ebbb,
+    type: 2}

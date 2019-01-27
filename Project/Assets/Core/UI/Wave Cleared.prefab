@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1552306817822769612
+--- !u!1 &62
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7502436754776214159}
-  - component: {fileID: 6069615253379023232}
-  - component: {fileID: 3775946912474852999}
-  - component: {fileID: 49479939692701482}
+  - component: {fileID: 242}
+  - component: {fileID: 212}
+  - component: {fileID: 271}
+  - component: {fileID: 180}
+  - component: {fileID: 6933345497226482137}
   m_Layer: 5
   m_Name: Wave Cleared
   m_TagString: Untagged
@@ -19,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &7502436754776214159
+--- !u!224 &242
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552306817822769612}
+  m_GameObject: {fileID: 62}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -38,21 +39,21 @@ RectTransform:
   m_AnchoredPosition: {x: 6.9, y: -42.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &6069615253379023232
+--- !u!222 &212
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552306817822769612}
+  m_GameObject: {fileID: 62}
   m_CullTransparentMesh: 0
---- !u!114 &3775946912474852999
+--- !u!114 &271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552306817822769612}
+  m_GameObject: {fileID: 62}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -80,20 +81,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Wave Cleared!
---- !u!111 &49479939692701482
+--- !u!111 &180
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552306817822769612}
+  m_GameObject: {fileID: 62}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: e90a8b3a5bc326044840d2700c3be076, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: e90a8b3a5bc326044840d2700c3be076, type: 2}
-  - {fileID: 7400000, guid: e90a8b3a5bc326044840d2700c3be076, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &6933345497226482137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eababd85136432f4883ee02eca96323f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

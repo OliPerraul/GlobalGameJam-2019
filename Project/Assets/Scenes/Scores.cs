@@ -26,6 +26,8 @@ public class Scores : MonoBehaviour
     void Start()
     {
         //Instance = this;
+        time = 0;
+
 
         if (Core.Game.Instance.Score == Core.Game.Instance.Score)
         {
@@ -47,9 +49,10 @@ public class Scores : MonoBehaviour
     {
         if (time >= lostScreenTimeLim)
         {
-            if (Input.anyKey)
+            if (Input.anyKeyDown)
             {
-                SceneManager.LoadScene("StartScreen");
+                //SceneManager.LoadScene("StartScreen");
+                Core.Game.Instance.SetState(Core.Game.StateEnum.StartScreen);
             }
         }
         else

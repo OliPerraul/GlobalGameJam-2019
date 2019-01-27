@@ -62,10 +62,37 @@ namespace Core
         {
             Instance = this;
             DontDestroyOnLoad(Instance.gameObject);
-            SceneManager.LoadScene("StartScreen");
+
+
+            //SetState(StateEnum.StartScreen);
             //OnVisitHandler.ON
+            SetState(StateEnum.StartScreen);
 
         }
+
+        public uint id_ak_stage_1 = AkSoundEngine.GetIDFromString("Stage_1");
+        public uint id_ak_state_2 = AkSoundEngine.GetIDFromString("Stage_2");
+        public uint id_ak_defeat = AkSoundEngine.GetIDFromString("Defeat");
+        public uint id_ak_menu = AkSoundEngine.GetIDFromString("Menu");
+        public uint id_ak_none = AkSoundEngine.GetIDFromString("None");
+
+        public uint id_ak_home = AkSoundEngine.GetIDFromString("Home_Music");
+        public void Start()
+        {
+
+            id_ak_stage_1 = AkSoundEngine.GetIDFromString("Stage_1");
+            id_ak_state_2 = AkSoundEngine.GetIDFromString("Stage_2");
+            id_ak_defeat = AkSoundEngine.GetIDFromString("Defeat");
+            id_ak_menu = AkSoundEngine.GetIDFromString("Menu");
+            id_ak_none = AkSoundEngine.GetIDFromString("None");
+
+            id_ak_home = AkSoundEngine.GetIDFromString("Home_Music");
+            //Debug.Log(id_ak_home);
+
+            //SetState(StateEnum.StartScreen);
+        }
+
+
 
 
         public void StartGame(int i = 0)
@@ -103,10 +130,18 @@ namespace Core
 
         }
 
+        //public uint id_ak_stage_1 = AkSoundEngine.GetIDFromString("Stage_1");
+        //public uint id_ak_state_2 = AkSoundEngine.GetIDFromString("Stage_2");
+        //public uint id_ak_defeat = AkSoundEngine.GetIDFromString("Defeat");
+        //public uint id_ak_menu = AkSoundEngine.GetIDFromString("Menu");
+        //public uint id_ak_none = AkSoundEngine.GetIDFromString("None");
+
+        //public uint id_ak_home = AkSoundEngine.GetIDFromString("Home_Music");
+
 
         public void StartUP()
         {
-
+            AkSoundEngine.SetState(id_ak_home, id_ak_stage_1);                               
 
             int i = numPlayers;
             if (i == 0)
@@ -163,18 +198,6 @@ namespace Core
 
 
 
-        public void EndGame()
-        {
-            if (Score == Highscore)
-            {
-                PlayerPrefs.SetInt("Highscore", Game.Instance.Score);
-            }
-
-            SceneManager.LoadScene("Score");
-            //SetState(StateEnum.StartScreen);
-        }
-
-
 
         public void SetState(StateEnum s)
         {
@@ -193,6 +216,13 @@ namespace Core
                     break;
 
                 case StateEnum.Visit:
+                    uint st;
+                    AkSoundEngine.GetState(id_ak_home, out st);
+                    if (st != id_ak_stage_1)
+                    {
+                        AkSoundEngine.SetState(id_ak_home, id_ak_stage_1);
+                    }
+
                     time = 0;
                     NextVisitTime = -1; // TODO
                     BuyStatus = Values.StartBuyStatus;
@@ -234,17 +264,44 @@ namespace Core
                         vai.MAXHP = vai.HP;
 
                     }
-
   
                     if (OnVisitHandler != null) OnVisitHandler.Invoke();
                     break;
 
+
+
+
+                case StateEnum.StartScreen:
+
+                    SceneManager.LoadScene("StartScreen");
+                    Invoke("PlayWise1", 1f);
+                    break;
+
                 case StateEnum.End:
-                    EndGame();
+                    if (Score == Highscore)
+                    {
+                        PlayerPrefs.SetInt("Highscore", Game.Instance.Score);
+                    }
+                    SceneManager.LoadScene("Score");
+                    Invoke("PlayWise2", 1);
+
 
                     break;
             }
         }
+
+
+        public void PlayWise1()
+        {
+            AkSoundEngine.SetState("Home_Music", "Menu");
+        }
+
+        public void PlayWise2()
+        {
+            AkSoundEngine.SetState("Home_Music", "Defeat");
+        }
+
+
 
 
         public void SpawnTrap()
@@ -302,6 +359,26 @@ namespace Core
                 case StateEnum.Visit:
                     TrapSpawnTime += Time.deltaTime;
                     ScoreTime += Time.deltaTime;
+
+                    if ((BuyStatus / Values.BuyStatusComplete) > .5)
+                    {
+                        uint st;
+                        AkSoundEngine.GetState(id_ak_home, out st);
+                        if (st != id_ak_state_2)
+                        {
+                            AkSoundEngine.SetState(id_ak_home, id_ak_state_2);
+                        }
+                    }
+                    else
+                    {
+                        uint st;
+                        AkSoundEngine.GetState(id_ak_home, out st);
+                        if (st != id_ak_stage_1)
+                        {
+                            AkSoundEngine.SetState(id_ak_home, id_ak_stage_1);
+                        }
+                    }
+
 
                     if (ScoreTime >= Values.ScoreInterval)
                     {

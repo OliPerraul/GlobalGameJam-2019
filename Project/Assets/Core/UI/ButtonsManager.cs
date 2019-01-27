@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace Core.UI
@@ -22,6 +23,17 @@ namespace Core.UI
         {
             Game.Instance.StartGame(2);
         }
+
+        public void MainMenu()
+        {
+            SceneManager.LoadScene("StartScreen");
+        }
+
+        public void HowTo()
+        {
+            SceneManager.LoadScene("HowTo");
+        }
+
 
     }
 

@@ -43,11 +43,17 @@ public class FadeEffect : MonoBehaviour
 
     private void FadeTrigger()
     {
+
         if (_isFadedIn)
         {
+            foreach (Image image in emotions)
+            {
+                image.enabled = false;
+            }
+
             FadeIn(textBubble);
             emotions[Random.Range(0, emotions.Length-1)].enabled = true;
-            _isFadedIn = false;
+           _isFadedIn = false;
         }
         else
         {
