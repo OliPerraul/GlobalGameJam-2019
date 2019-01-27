@@ -79,7 +79,9 @@ namespace Core.Collectibles
 
         public void Collect()
         {
+            Level.Instance.collectablesMesh.Remove(gameObject);
             Destroy(gameObject);
+            
         }
 
     }

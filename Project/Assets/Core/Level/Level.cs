@@ -18,7 +18,10 @@ namespace Core
 
         public GameObject CollectibleSnaps;
         [HideInInspector]
-        public Vector3[] CollectibleSnapsArray;
+        public Transform[] CollectibleSnapsArray;
+        
+        [HideInInspector]
+        public List<GameObject> collectablesMesh = new List<GameObject>();
 
         public GameObject UpperSnapPoints;
         [HideInInspector]
@@ -79,11 +82,11 @@ namespace Core
         {
             Instance = this;
 
-            CollectibleSnapsArray = new Vector3[CollectibleSnaps.transform.childCount];
+            CollectibleSnapsArray = new Transform[CollectibleSnaps.transform.childCount];
             int i = 0;
             foreach (Transform child in CollectibleSnaps.transform)
             {
-                CollectibleSnapsArray[i] = child.position; i++;
+                CollectibleSnapsArray[i] = child; i++;
                 //child is your child transform
             }
 
@@ -129,12 +132,28 @@ namespace Core
             foreach (MeshRenderer furnitureRenderer in furnitures)
             {
                 Material[] materials = furnitureRenderer.materials;
-                Debug.Log("Materials " + materials.Length); 
                 foreach (Material mateirial in materials)
                 {
                     c = mateirial.color;
                     mateirial.color = new Color(c.r, c.g, c.b, alpha);
                 }
+            }
+            
+            foreach (GameObject collectable in collectablesMesh)
+            {
+                Material[] materials = collectable.GetComponentInChildren<MeshRenderer>().materials;
+                foreach (Material material in materials)
+                {
+                    c = material.color;
+                    material.color = new Color(c.r, c.g, c.b, alpha);
+                }
+
+                SpriteRenderer sRenderer = collectable.GetComponentInChildren<SpriteRenderer>();
+                if (sRenderer != null)
+                {
+                    c = sRenderer.color;
+                    sRenderer.color = new Color(c.r, c.g, c.b, alpha);
+                }  
             }
 
 

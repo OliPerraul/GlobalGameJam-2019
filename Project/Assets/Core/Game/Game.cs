@@ -324,8 +324,14 @@ namespace Core
 
             int iidx = Random.Range(0, Level.Instance.CollectibleSnapsArray.Length);
 
-            Vector3 spwnPt = Level.Instance.CollectibleSnapsArray[iidx];
-            Instantiate(choices[choiceIdx], spwnPt, Quaternion.identity);
+            Transform spwnPt = Level.Instance.CollectibleSnapsArray[iidx];
+            GameObject collectable = Instantiate(choices[choiceIdx], spwnPt);
+            collectable.tag = spwnPt.tag;
+            if (collectable.tag == "SecondFloor")
+            {
+                Level.Instance.collectablesMesh.Add(collectable);
+            }
+            
         }
 
 

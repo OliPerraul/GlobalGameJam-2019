@@ -469,6 +469,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snap (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 5715073657684515539, guid: 7450e8a65f4f65e47902c7d54283edc7,
+        type: 3}
+      propertyPath: m_TagString
+      value: SecondFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 5533754386457857254, guid: 7450e8a65f4f65e47902c7d54283edc7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1574,6 +1579,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snap (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 5715073657684515539, guid: 7450e8a65f4f65e47902c7d54283edc7,
+        type: 3}
+      propertyPath: m_TagString
+      value: SecondFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 5533754386457857254, guid: 7450e8a65f4f65e47902c7d54283edc7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1923,6 +1933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Snap (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715073657684515539, guid: 7450e8a65f4f65e47902c7d54283edc7,
+        type: 3}
+      propertyPath: m_TagString
+      value: SecondFloor
       objectReference: {fileID: 0}
     - target: {fileID: 5533754386457857254, guid: 7450e8a65f4f65e47902c7d54283edc7,
         type: 3}
@@ -3788,6 +3803,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snap (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 5715073657684515539, guid: 7450e8a65f4f65e47902c7d54283edc7,
+        type: 3}
+      propertyPath: m_TagString
+      value: SecondFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 5533754386457857254, guid: 7450e8a65f4f65e47902c7d54283edc7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4997,6 +5017,7 @@ MonoBehaviour:
   Exit: {fileID: 1784360219}
   CollectibleSnaps: {fileID: 1417358274}
   CollectibleSnapsArray: []
+  collectablesMesh: []
   UpperSnapPoints: {fileID: 2039541195}
   UpperSnapPointsArray: []
   DownSnapPoints: {fileID: 1757490849}
