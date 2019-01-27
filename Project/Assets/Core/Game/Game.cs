@@ -280,6 +280,14 @@ namespace Core
 
         public void Update()
         {
+
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Q))
+            {
+                SetState(StateEnum.StartScreen);
+                return;
+            }
+
+
             switch (State)
             {
                 case StateEnum.AwaitingVisitor:

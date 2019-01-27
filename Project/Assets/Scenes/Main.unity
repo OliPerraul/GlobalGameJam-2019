@@ -1162,6 +1162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuyMeterContent: {fileID: 1170915061}
   Text: {fileID: 453610035}
+  strTmplt: 'Score: {}'
 --- !u!1 &394606312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.6000061, y: 8.9}
+  m_AnchoredPosition: {x: 0.5999756, y: 8.899994}
   m_SizeDelta: {x: 232, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &482682252
@@ -4284,7 +4285,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2000752632}
   - component: {fileID: 2000752631}
-  - component: {fileID: 2000752630}
   - component: {fileID: 2000752633}
   m_Layer: 0
   m_Name: Level
@@ -4293,26 +4293,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2000752630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000752629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535f35baca0f8d3439c205394a6f2fd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkPrefab: {fileID: 4317947346746682, guid: 7ba11a294e2d3a449a03fe2833a54916, type: 3}
-  tileWidth: 2
-  maxJumpHeight: 0.1
-  raycastLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  invertFacingNormal: 0
-  dontAllignYAxis: 0
 --- !u!114 &2000752631
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -52,8 +52,11 @@ namespace Core.UI
 
         public void OnDestroy()
         {
-            Game.Instance.OnBuyStatusChangedHandler -= OnBuyStatusChanged;
-            Game.Instance.OnVisitHandler -= OnVisit;
+            if (Game.Instance != null)
+            {
+                Game.Instance.OnBuyStatusChangedHandler -= OnBuyStatusChanged;
+                Game.Instance.OnVisitHandler -= OnVisit;
+            }
         }
 
         //public void )
