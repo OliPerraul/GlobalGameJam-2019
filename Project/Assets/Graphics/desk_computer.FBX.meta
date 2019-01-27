@@ -14,7 +14,37 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Box004
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #162'
+    second: {fileID: 2100000, guid: 2a806f63bbaa44dda93592dd3848fa0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #164'
+    second: {fileID: 2100000, guid: edc0c75388eee42f6ad9a637c36bdf48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #165'
+    second: {fileID: 2100000, guid: 3f296eb07d18148c4ac3beb202044965, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #166'
+    second: {fileID: 2100000, guid: 634310b045c024025a5f9e525f44a49c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #60'
+    second: {fileID: 2100000, guid: c6b52cea77990482380ec1be29c131e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #61'
+    second: {fileID: 2100000, guid: 88045a3a755b54e9097c09c29064fac1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

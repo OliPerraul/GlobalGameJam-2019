@@ -65,20 +65,15 @@ namespace Core
         [SerializeField]
         private float denum = 4;
 
-        private MeshRenderer rendUpper;
+        public MeshRenderer rendUpper;
 
-        public List<MeshRenderer> items = new List<MeshRenderer>();
+        [Tooltip("Furnitures mesh renderer")]
+        public MeshRenderer[] furnitures;
 
         public static Level Instance;
 
 
         public NavMeshSurface NMSurf;
-
-
-        public void Start()
-        {
-            rendUpper = Upper.GetComponent<MeshRenderer>();
-        }
 
         public void Awake()
         {
@@ -129,7 +124,18 @@ namespace Core
             float alpha = Mathf.Lerp(none, full, f);
             Color c = rendUpper.material.color;
             rendUpper.material.color = new Color(c.r, c.g, c.b, alpha);
-            // Debug.Log(rendUpper.material.color);
+            
+            
+            foreach (MeshRenderer furnitureRenderer in furnitures)
+            {
+                Material[] materials = furnitureRenderer.materials;
+                Debug.Log("Materials " + materials.Length); 
+                foreach (Material mateirial in materials)
+                {
+                    c = mateirial.color;
+                    mateirial.color = new Color(c.r, c.g, c.b, alpha);
+                }
+            }
 
 
 

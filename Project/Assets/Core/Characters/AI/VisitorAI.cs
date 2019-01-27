@@ -178,8 +178,6 @@ public class VisitorAI : MonoBehaviour
             SetState(State.Chase);
             //currentState = State.Chase;
         }
-
-        Debug.Log("Wander Time: " + _stateTime);
     }
     
     /// <summary>
@@ -197,7 +195,6 @@ public class VisitorAI : MonoBehaviour
             SetState(State.Wander);
         }
 
-        Debug.Log("Idle Time: " + _stateTime);
     }
     
     /// <summary>
