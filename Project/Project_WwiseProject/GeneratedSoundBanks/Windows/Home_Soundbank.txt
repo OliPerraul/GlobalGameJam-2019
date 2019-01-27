@@ -1,0 +1,20 @@
+Event	ID	Name			Wwise Object Path	Notes
+	4105482728	Home_Music			\Default Work Unit\Home_Music	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	4105482728	Home_Music			\Default Work Unit\Home_Music	
+
+State	ID	Name	State Group			Notes
+	0	None	Home_Music			
+	1593864692	Defeat	Home_Music			
+	2607556080	Menu	Home_Music			
+	4175426381	Stage_1	Home_Music			
+	4175426382	Stage_2	Home_Music			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	179551882	MUS_Menu_ggj19	C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\.cache\Windows\SFX\MUS_Menu_ggj19_8956FC97.wem		\Interactive Music Hierarchy\Default Work Unit\Home_Music\Menu\MUS_Menu_ggj19\MUS_Menu_ggj19		4974612
+	345119361	MUS_InGame_1_ggj19	C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\.cache\Windows\SFX\MUS_InGame_1_ggj19_8956FC97.wem		\Interactive Music Hierarchy\Default Work Unit\Home_Music\Stage 1\MUS_InGame_1_ggj19\MUS_InGame_1_ggj19		26181884
+	363143332	MUS_InGame_2_ggj19	C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\.cache\Windows\SFX\MUS_InGame_2_ggj19_8956FC97.wem		\Interactive Music Hierarchy\Default Work Unit\Home_Music\Stage 2\MUS_InGame_2_ggj19\MUS_InGame_2_ggj19		25239336
+	497725125	MUS_Transition_ggj19	C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\.cache\Windows\SFX\MUS_Transition_ggj19_8956FC97.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_Transition_ggj19\MUS_Transition_ggj19		1466244
+	1062145554	MUS_Defeat_ggj19	C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\.cache\Windows\SFX\MUS_Defeat_ggj19_8956FC97.wem		\Interactive Music Hierarchy\Default Work Unit\Home_Music\Defeat\MUS_Defeat_ggj19\MUS_Defeat_ggj19		3770248
+

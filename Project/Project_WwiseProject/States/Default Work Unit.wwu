@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B67D603B-9D59-485B-95E1-B29E4507BC95}" SchemaVersion="89">
+	<States>
+		<WorkUnit Name="Default Work Unit" ID="{B67D603B-9D59-485B-95E1-B29E4507BC95}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Home_Music" ID="{C91AA333-AFB5-4D95-B6AE-418F141DC70D}">
+					<ChildrenList>
+						<State Name="None" ID="{2DB8686E-039F-407A-BDBA-DF89BDF59BF5}"/>
+						<State Name="Stage_1" ID="{A8671B6B-A5CF-4514-8217-43BD07A73976}"/>
+						<State Name="Stage_2" ID="{81366604-4307-421C-8EA8-294E0C9A86A7}"/>
+						<State Name="Defeat" ID="{488DC316-82AF-4589-8AA5-99A1B7079813}"/>
+						<State Name="Menu" ID="{13CCEB40-6CC4-4F37-99DB-F1A4A721F0C5}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="None" ID="{2DB8686E-039F-407A-BDBA-DF89BDF59BF5}"/>
+							<EndState Name="Menu" ID="{13CCEB40-6CC4-4F37-99DB-F1A4A721F0C5}"/>
+							<Time>0.1</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>
