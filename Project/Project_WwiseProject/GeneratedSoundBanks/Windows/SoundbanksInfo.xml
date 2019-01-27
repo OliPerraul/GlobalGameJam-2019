@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="132">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Admin\Documents\GitHub\ggj19\Project\Project_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3193338770" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Home_Soundbank</ObjectPath>
+			<ShortName>Home_Soundbank</ShortName>
+			<Path>Home_Soundbank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="4105482728" Name="Home_Music" ObjectPath="\Events\Default Work Unit\Home_Music"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="179551882" Language="SFX">
+					<ShortName>MUS_Menu_ggj19.wav</ShortName>
+					<Path>SFX\MUS_Menu_ggj19_8956FC97.wem</Path>
+				</File>
+				<File Id="345119361" Language="SFX">
+					<ShortName>MUS_InGame_1_ggj19.wav</ShortName>
+					<Path>SFX\MUS_InGame_1_ggj19_8956FC97.wem</Path>
+				</File>
+				<File Id="363143332" Language="SFX">
+					<ShortName>MUS_InGame_2_ggj19.wav</ShortName>
+					<Path>SFX\MUS_InGame_2_ggj19_8956FC97.wem</Path>
+				</File>
+				<File Id="497725125" Language="SFX">
+					<ShortName>MUS_Transition_ggj19.wav</ShortName>
+					<Path>SFX\MUS_Transition_ggj19_8956FC97.wem</Path>
+				</File>
+				<File Id="1062145554" Language="SFX">
+					<ShortName>MUS_Defeat_ggj19.wav</ShortName>
+					<Path>SFX\MUS_Defeat_ggj19_8956FC97.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

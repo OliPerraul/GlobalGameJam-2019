@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{69EAD609-16DC-4A3B-BA6D-C0658AD1D7D0}" SchemaVersion="89">
+	<Switches>
+		<WorkUnit Name="Default Work Unit" ID="{69EAD609-16DC-4A3B-BA6D-C0658AD1D7D0}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Home_Music_Switches" ID="{63FB3611-1808-4243-A99A-E0BA105734A1}">
+					<ChildrenList>
+						<Switch Name="Stage_1" ID="{D1A1226B-2DCF-43E9-96E8-CDEB5CA04726}"/>
+						<Switch Name="Stage_2" ID="{12C5292F-9751-4EDD-991D-BF4E256765F0}"/>
+						<Switch Name="Defeat" ID="{DA99CF06-3CAA-41BE-B9D2-CFE48296C71D}"/>
+						<Switch Name="Menu" ID="{728C45A0-17E9-41CC-ABAB-3B2B64E6BB69}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</Switches>
+</WwiseDocument>

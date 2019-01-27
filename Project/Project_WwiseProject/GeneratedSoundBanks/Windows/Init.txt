@@ -1,0 +1,17 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	4105482728	Home_Music			\Default Work Unit\Home_Music	
+
+State	ID	Name	State Group			Notes
+	0	None	Home_Music			
+	1593864692	Defeat	Home_Music			
+	2607556080	Menu	Home_Music			
+	4175426381	Stage_1	Home_Music			
+	4175426382	Stage_2	Home_Music			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

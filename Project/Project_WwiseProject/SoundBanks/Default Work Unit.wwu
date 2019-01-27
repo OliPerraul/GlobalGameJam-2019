@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{005A8331-7EC0-492B-9FE1-CB629AA5E6AC}" SchemaVersion="89">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{005A8331-7EC0-492B-9FE1-CB629AA5E6AC}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Home_Soundbank" ID="{882C5567-4006-4553-926E-0A1E120CF795}">
+					<ObjectInclusionList>
+						<ObjectRef Name="MUS_Transition_ggj19" ID="{04B7F851-9175-4999-9265-B69C543FFE12}" WorkUnitID="{1443B74F-668F-4CD8-BA6B-D87584B8E56A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Home_Music" ID="{80E40AD4-6BF2-4A3A-B98C-5B5899A2DEFB}" WorkUnitID="{1443B74F-668F-4CD8-BA6B-D87584B8E56A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Home_Music" ID="{2B05E745-C7DC-4FEA-B79B-84FAB87A69EC}" WorkUnitID="{3AF07184-B51B-43EB-A1D3-832D811C915F}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

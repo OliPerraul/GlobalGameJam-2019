@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8248f39ae25534fa96cb60c8e85f49, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: dc32b4f961ce2b42b944c5108e369c8c
+    m_lastTime: -8586530533562079750
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: b34944d9804be144a9e41cf2a8c95039
+    m_lastTime: -8586530533563591113
+    List: []
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 31835a00c07e2b499fe1cb629aa5e6ac
+    m_lastTime: -8586530465326752885
+    List:
+    - name: Home_Soundbank
+      guid: 67552c8806405345926e0a1e120cf795
+      id: 3193338770
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Home_Soundbank
+        ObjectType: 7
+      Path: Default Work Unit\Home_Soundbank
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 8471f03a1bb5eb43a1d3832d811c915f
+    m_lastTime: -8586530483804642300
+    List:
+    - name: Home_Music
+      guid: 45e7052bdcc7ea4fb79b84fab87a69ec
+      id: 4105482728
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Home_Music
+        ObjectType: 3
+      Path: Default Work Unit\Home_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: aadaddb18de2d0408bb2b2ab5789633b
+    m_lastTime: -8586530533563120697
+    List: []
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 3b607db6599d5b4895e1b29e4507bc95
+    m_lastTime: -8586530465326672811
+    List:
+    - name: Home_Music
+      guid: 33a31ac9b5af954db6ae418f141dc70d
+      id: 4105482728
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Home_Music
+        ObjectType: 9
+      Path: Default Work Unit\Home_Music
+      values:
+      - name: Defeat
+        guid: 16c38d48af8289458aa599a1b7079813
+        id: 1593864692
+        PathAndIcons:
+        - ElementName: Defeat
+          ObjectType: 8
+      - name: Menu
+        guid: 40ebcc13c46c374f99dbf1a4a721f0c5
+        id: 2607556080
+        PathAndIcons:
+        - ElementName: Menu
+          ObjectType: 8
+      - name: None
+        guid: 6e68b82d9f037a40bdbadf89bdf59bf5
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      - name: Stage_1
+        guid: 6b1b67a8cfa51445821743bd07a73976
+        id: 4175426381
+        PathAndIcons:
+        - ElementName: Stage_1
+          ObjectType: 8
+      - name: Stage_2
+        guid: 0466368107431c428ea8294e0c9a86a7
+        id: 4175426382
+        PathAndIcons:
+        - ElementName: Stage_2
+          ObjectType: 8
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 09d6ea69dc163b4aba6dc0658ad1d7d0
+    m_lastTime: -8586530483803301080
+    List:
+    - name: Home_Music_Switches
+      guid: 1136fb6308184342a99ae0ba105734a1
+      id: 2091837487
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Home_Music_Switches
+        ObjectType: 11
+      Path: Default Work Unit\Home_Music_Switches
+      values:
+      - name: Defeat
+        guid: 06cf99daaa3cbe41b9d2cfe48296c71d
+        id: 1593864692
+        PathAndIcons:
+        - ElementName: Defeat
+          ObjectType: 10
+      - name: Menu
+        guid: a0458c72e917cc41abab3b2b64e6bb69
+        id: 2607556080
+        PathAndIcons:
+        - ElementName: Menu
+          ObjectType: 10
+      - name: Stage_1
+        guid: 6b22a1d1cf2de94396e8cdeb5ca04726
+        id: 4175426381
+        PathAndIcons:
+        - ElementName: Stage_1
+          ObjectType: 10
+      - name: Stage_2
+        guid: 2f29c5125197dd4e991dbf4e256765f0
+        id: 4175426382
+        PathAndIcons:
+        - ElementName: Stage_2
+          ObjectType: 10
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: c7d213b6eafa9941a6d8e8e27e442d5f
+    m_lastTime: -8586530533562289932
+    List: []
+  ExpandedItems:
+  - /Project_WwiseProject
+  - /Project_WwiseProject/Events
+  - /Project_WwiseProject/Events/Default Work Unit
+  - /Project_WwiseProject/States
+  - /Project_WwiseProject/States/Default Work Unit
+  - /Project_WwiseProject/States/Default Work Unit/Home_Music
+  autoPopulateEnabled: 1
+  CurrentPluginConfig: 
