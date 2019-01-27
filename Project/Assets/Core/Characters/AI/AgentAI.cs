@@ -368,17 +368,20 @@ public class AgentAI : MonoBehaviour
     {
         //_isWalk = true;
         //_agent.destination = _visitingPos[_posIndex].position;
-        if (Vector3.Distance(agentTransform.position, Core.Level.Instance.Exit.transform.position) <
+        if (Vector3.Distance(transform.position, Core.Level.Instance.Exit.transform.position) <
             2)
         {
             //Destroy(gameObject);
+
+            Destroy(transform.parent.gameObject);
             Core.Game.Instance.AICount--;
+
             if (Core.Game.Instance.AICount <= 0)
             {
                 Core.Game.Instance.AICount = 0;
                 Core.Game.Instance.OnWaveCleared();
             }
-            Destroy(transform.parent.gameObject);
+
 
         }
 

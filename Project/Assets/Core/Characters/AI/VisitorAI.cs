@@ -228,7 +228,7 @@ public class VisitorAI : MonoBehaviour
     {
         //_isWalk = true;
         //_agent.destination = _visitingPos[_posIndex].position;
-        if (Vector3.Distance(visitorTransform.position, Core.Level.Instance.Exit.transform.position) <
+        if (Vector3.Distance(transform.position, Core.Level.Instance.Exit.transform.position) <
             2)
         {
             Core.Game.Instance.AICount--;
@@ -238,6 +238,7 @@ public class VisitorAI : MonoBehaviour
                 Core.Game.Instance.OnWaveCleared();
             }
             Destroy(transform.parent.gameObject);
+
         }
 
     }

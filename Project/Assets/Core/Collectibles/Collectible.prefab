@@ -129,7 +129,7 @@ MonoBehaviour:
   limitIdle: 0
   rotateSpeed: 0.5
   circle: {fileID: 4677888425585326120}
-  chaseSpeed: 8
+  chaseSpeed: 12
   graphic: {fileID: 0}
 --- !u!135 &4677888426182798260
 SphereCollider:
