@@ -67,6 +67,8 @@ namespace Core
 
         private MeshRenderer rendUpper;
 
+        public List<MeshRenderer> items = new List<MeshRenderer>();
+
         public static Level Instance;
 
 
