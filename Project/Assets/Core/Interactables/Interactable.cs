@@ -48,6 +48,12 @@ namespace Core.Interactables
         public void Interact()
         {
             Game.Instance.BuyStatus -= reduceAmount;
+
+            if (Game.Instance.BuyStatus < 0)
+            {
+                Game.Instance.BuyStatus = 0;
+            }
+
             
             Game.Instance.OnBuyStatusChangedHandler.Invoke();
         }
