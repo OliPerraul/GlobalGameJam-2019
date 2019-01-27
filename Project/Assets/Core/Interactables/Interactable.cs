@@ -1,31 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 //using System.Reflection
 
 namespace Core.Interactables
 {
     public class Interactable : MonoBehaviour
     {
-        [SerializeField]
-        private Resource Resource;
 
+        public float interval = 30f;
+        public float reduceAmount = 50f;
+        public Image cooldownSlider;
+        
+        private float currentTime = 0;
+        
+
+        private void Start()
+        {
+            currentTime = 0;
+            cooldownSlider.fillAmount = 0;
+        }
+
+        private void Update()
+        {
+            currentTime += Time.deltaTime;
+            cooldownSlider.fillAmount = currentTime / interval;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (currentTime > interval)
+            {
+                currentTime = 0;
+                Interact();
+            }
+        }
 
         public void Interact()
         {
-            Game.Instance.Values.BuyStatusComplete += Resource.Added.BuyStatusComplete;
-            Game.Instance.Values.BuyStatusIncrement += Resource.Added.BuyStatusIncrement;
-            Game.Instance.Values.HousePrice += Resource.Added.HousePrice;
-            Game.Instance.Values.MaxHP += Resource.Added.MaxHP;
-            Game.Instance.Values.MinHP += Resource.Added.MinHP;
-            //Game.Instance.Values.NumVisitorMax += Resource.Added.BuyStatusIncrement;
-            Game.Instance.Values.StartBuyStatus += Resource.Added.StartBuyStatus;
-            Game.Instance.Values.TrapSpawnFreqMax += Resource.Added.TrapSpawnFreqMax;
-            Game.Instance.Values.TrapSpawnFreqMin += Resource.Added.TrapSpawnFreqMin;
-            Game.Instance.Values.VisitTimeMax += Resource.Added.VisitTimeMax;
-            Game.Instance.Values.VisitTimeMin += Resource.Added.VisitTimeMin;
-
-
+            Game.Instance.BuyStatus -= reduceAmount;
+            
+            Game.Instance.OnBuyStatusChangedHandler.Invoke();
         }
 
         public void OnTriggerStay(Collider other)

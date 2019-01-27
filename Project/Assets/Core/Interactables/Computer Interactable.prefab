@@ -10,8 +10,28 @@ PrefabInstance:
     - target: {fileID: 8042502436020447132, guid: 2feee3bdb36c1864f84505fd53528dd5,
         type: 3}
       propertyPath: m_Name
-      value: Template
+      value: Computer Interactable
       objectReference: {fileID: 0}
+    - target: {fileID: 8157577747475606095, guid: 2feee3bdb36c1864f84505fd53528dd5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6863105
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157577747475606095, guid: 2feee3bdb36c1864f84505fd53528dd5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6863105
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157577747475606095, guid: 2feee3bdb36c1864f84505fd53528dd5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6863105
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881083454280237182, guid: 2feee3bdb36c1864f84505fd53528dd5,
+        type: 3}
+      propertyPath: cooldownSlider
+      value: 
+      objectReference: {fileID: 8185972502256023618}
     - target: {fileID: 627280863654988361, guid: 2feee3bdb36c1864f84505fd53528dd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,5 +87,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1786118546756686391, guid: 2feee3bdb36c1864f84505fd53528dd5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db7dae19887775748bc1f9bd1b7fa11b,
+        type: 3}
+    - target: {fileID: 1786118546756686391, guid: 2feee3bdb36c1864f84505fd53528dd5,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1786118546756686391, guid: 2feee3bdb36c1864f84505fd53528dd5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2feee3bdb36c1864f84505fd53528dd5, type: 3}
+--- !u!114 &8185972502256023618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8538201498786104485, guid: 2feee3bdb36c1864f84505fd53528dd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 569603752085912807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

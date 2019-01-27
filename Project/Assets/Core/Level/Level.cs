@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 
@@ -73,7 +73,10 @@ namespace Core
         [Tooltip("Furnitures mesh renderer")]
         public MeshRenderer[] furnitures;
 
+        public GameObject[] interactives;
+
         public static Level Instance;
+        
 
 
         public NavMeshSurface NMSurf;
@@ -154,6 +157,16 @@ namespace Core
                     c = sRenderer.color;
                     sRenderer.color = new Color(c.r, c.g, c.b, alpha);
                 }  
+            }
+            
+            foreach (GameObject obj in interactives)
+            {
+                SpriteRenderer spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
+                c = spriteRenderer.color;
+                spriteRenderer.color = new Color(c.r, c.g, c.b, alpha);
+                Image image = obj.GetComponentInChildren<Image>();
+                c = image.color;
+                image.color = new Color(c.r, c.g, c.b, alpha);
             }
 
 
