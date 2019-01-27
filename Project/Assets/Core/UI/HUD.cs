@@ -13,11 +13,21 @@ namespace Core.UI
         [SerializeField]
         public Image BuyMeterContent;
 
+        [SerializeField]
+        public Text Text;
+        public string strTmplt = "Score: {}";
+
         public void Awake()
         {
             Instance = this;
             Debug.Log("Hello HUD");
         }
+
+        public void Update()
+        {
+            Text.text = strTmplt.Replace("{}", Game.Instance.Score.ToString());
+        }
+
 
         public void Start()
         {

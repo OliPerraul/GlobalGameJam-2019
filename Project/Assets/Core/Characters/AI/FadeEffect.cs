@@ -6,6 +6,11 @@ public class FadeEffect : MonoBehaviour
 {
     public CanvasGroup textBubble;
     public float fadeTime = 1.5f;
+    public float autoFadeInterval = 2f;
+
+    private float _currentTime = 0;
+    private float _randomFadeTime = 0;
+    private bool _isFadedIn = true;
 
     /// <summary>
     /// Start this instance.
@@ -13,8 +18,37 @@ public class FadeEffect : MonoBehaviour
     private void Start()
     {
         textBubble.alpha = 0;
+        _randomFadeTime = Random.value * autoFadeInterval + fadeTime;
     }
-    
+
+    private void Update()
+    {
+        _currentTime += Time.deltaTime;
+
+        if (_currentTime > _randomFadeTime)
+        {
+            _currentTime = 0;
+            _randomFadeTime = Random.value * autoFadeInterval + fadeTime;
+            FadeTrigger();
+        }
+    }
+
+    #region Fade Management
+
+    private void FadeTrigger()
+    {
+        if (_isFadedIn)
+        {
+            FadeIn(textBubble);
+            _isFadedIn = false;
+        }
+        else
+        {
+            FadeOut(textBubble);
+            _isFadedIn = true;
+        }
+    }
+
     /// <summary>
     /// Fades in.
     /// </summary>
@@ -23,7 +57,7 @@ public class FadeEffect : MonoBehaviour
     {
         StartCoroutine(Fade(obj, 0, 1, fadeTime));
     }
-    
+
     /// <summary>
     /// Fades the out.
     /// </summary>
@@ -32,7 +66,7 @@ public class FadeEffect : MonoBehaviour
     {
         StartCoroutine(Fade(obj, 1, 0, fadeTime));
     }
-    
+
     /// <summary>
     /// Fade the specified target, start, end and time.
     /// </summary>
@@ -55,6 +89,8 @@ public class FadeEffect : MonoBehaviour
 
         target.alpha = endFade;
     }
+    #endregion
+
 
     #region DEV fake
     [Header("Dev Fake")]

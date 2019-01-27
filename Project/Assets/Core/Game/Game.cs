@@ -22,6 +22,10 @@ namespace Core
             StartScreen,
         }
 
+        public float ScoreTime = 0f;
+        public int Score = 0;
+
+
         public static Game Instance;
 
         //public int MainId = 0;
@@ -65,6 +69,8 @@ namespace Core
 
         public void StartGame(int i = 0)
         {
+            Score = 0;
+
             switch (MainId)
             {
                 case 0:
@@ -97,6 +103,8 @@ namespace Core
 
         public void StartUP()
         {
+
+
             int i = numPlayers;
             if (i == 0)
             {
@@ -277,6 +285,14 @@ namespace Core
                 case StateEnum.AwaitingVisitor:
                 case StateEnum.Visit:
                     TrapSpawnTime += Time.deltaTime;
+                    ScoreTime += Time.deltaTime;
+
+                    if (ScoreTime >= Values.ScoreInterval)
+                    {
+                        ScoreTime = 0f;
+                        Score += Values.ScoreIncrease;
+
+                    }
 
                     if (TrapSpawnTime >= TrapSpawnTimeLimit)
                     {

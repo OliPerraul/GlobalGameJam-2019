@@ -28,6 +28,10 @@ namespace Core
         float vSpeed = 0; // current vertical velocity
 
 
+        [SerializeField]
+        public SpriteRenderer SpriteR = null; // current vertical velocity
+
+
         public Collectibles.Resource Collectible;
 
         public Interactables.Interactable Interactable = null;
@@ -85,6 +89,18 @@ namespace Core
             vel.y = vSpeed; // include vertical speed in vel
                             // convert vel to displacement and Move the character:
             controller.Move(vel * Time.deltaTime);
+
+
+            if (Collectible != null)
+            {
+                SpriteR.color = new Color(SpriteR.color.r, SpriteR.color.g, SpriteR.color.b, 1);
+
+            }
+            else
+            {
+                SpriteR.color = new Color(SpriteR.color.r, SpriteR.color.g, SpriteR.color.b, 0);
+            }
+
 
             if (Input.GetButtonDown(intpu_fire))
             {
